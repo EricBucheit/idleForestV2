@@ -18,6 +18,7 @@ export default class Canvas extends React.Component {
           data : false,
           mousePos : false,
         };
+        console.log(window.innerHeight)
 
         this.canvasRef = React.createRef();
         this.Draw = new Draw();
@@ -128,9 +129,16 @@ export default class Canvas extends React.Component {
                     width={480} 
                     height={480}
                     style={{    
-                                marginTop:50,
-                                marginLeft:100,
-                                border: "1px solid black", 
+                                padding: 0,
+                                margin: "auto",
+                                display: "block",
+                                width: 480,
+                                height: 480,
+                                position: "absolute",
+                                top: 0,
+                                bottom: 0,
+                                left: 0,
+                                right: 0,
                             }}
                     id = "canvas"
                     tabIndex="0" 
