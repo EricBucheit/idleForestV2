@@ -1,0 +1,5 @@
+GlobalSettings = {
+
+}
+
+module.exports = GlobalSettings

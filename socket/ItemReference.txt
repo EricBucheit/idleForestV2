@@ -1,0 +1,448 @@
+
+Consumeable
+     Potion
+        tiny
+        small
+        medium
+        large
+        giant
+        god
+     Food
+        chicken
+        cow
+        llama
+        pig
+        turkey
+     Water
+        tiny
+        small
+        medium
+        large
+        giant
+        god
+     Cooked
+        chicken
+        cow
+        llama
+        pig
+        turkey
+        carrots
+        potatoes
+        corn
+        cucumber
+        tomatoes
+        artichoke
+     Plants
+        carrot
+        potatoes
+        corn
+        cucumber
+        tomatoes
+        artichoke
+Resources
+     Ores
+        tin
+        copper
+        iron
+        gold
+        platinum
+        diamond
+     Wood
+        oak
+        maple
+        mahogony
+        magic
+        super
+     Seeds
+        carrot
+        potatoe
+        corn
+        cucumber
+        tomatoe
+        artichoke
+     Bars
+        bronze
+        iron
+        gold
+        platinum
+        diamond
+Armor
+     Bronze
+        helm
+        chest
+        legs
+        boots
+        shield
+     Iron
+        helm
+        chest
+        legs
+        boots
+        shield
+     Gold
+        helm
+        chest
+        legs
+        boots
+        shield
+     Platinum
+        helm
+        chest
+        legs
+        boots
+        shield
+     Diamond
+        helm
+        chest
+        legs
+        boots
+        shield
+Weapon
+     Bronze
+        mace
+        sword
+        axe
+        pickaxe
+     Iron
+        mace
+        sword
+        axe
+        pickaxe
+     Gold
+        mace
+        sword
+        axe
+        pickaxe
+     Platinum
+        mace
+        sword
+        axe
+        pickaxe
+     Diamond
+        mace
+        sword
+        axe
+        pickaxe
+     Bow
+        oak
+        maple
+        mahogony
+        magic
+        super
+     Arrows
+        bronze
+        iron
+        gold
+        platinum
+        diamond
+Magic
+     Stones
+        teleport
+        shield
+        attack
+        archer
+        mining
+        hunting
+        woodcutting
+
+Potion
+--------------
+
+items.getItem("Consumeable", "Potion", "tiny")
+
+items.getItem("Consumeable", "Potion", "small")
+
+items.getItem("Consumeable", "Potion", "medium")
+
+items.getItem("Consumeable", "Potion", "large")
+
+items.getItem("Consumeable", "Potion", "giant")
+
+items.getItem("Consumeable", "Potion", "god")
+
+Food
+--------------
+
+items.getItem("Consumeable", "Food", "chicken")
+
+items.getItem("Consumeable", "Food", "cow")
+
+items.getItem("Consumeable", "Food", "llama")
+
+items.getItem("Consumeable", "Food", "pig")
+
+items.getItem("Consumeable", "Food", "turkey")
+
+Water
+--------------
+
+items.getItem("Consumeable", "Water", "tiny")
+
+items.getItem("Consumeable", "Water", "small")
+
+items.getItem("Consumeable", "Water", "medium")
+
+items.getItem("Consumeable", "Water", "large")
+
+items.getItem("Consumeable", "Water", "giant")
+
+items.getItem("Consumeable", "Water", "god")
+
+Cooked
+--------------
+
+items.getItem("Consumeable", "Cooked", "chicken")
+
+items.getItem("Consumeable", "Cooked", "cow")
+
+items.getItem("Consumeable", "Cooked", "llama")
+
+items.getItem("Consumeable", "Cooked", "pig")
+
+items.getItem("Consumeable", "Cooked", "turkey")
+
+items.getItem("Consumeable", "Cooked", "carrots")
+
+items.getItem("Consumeable", "Cooked", "potatoes")
+
+items.getItem("Consumeable", "Cooked", "corn")
+
+items.getItem("Consumeable", "Cooked", "cucumber")
+
+items.getItem("Consumeable", "Cooked", "tomatoes")
+
+items.getItem("Consumeable", "Cooked", "artichoke")
+
+Plants
+--------------
+
+items.getItem("Consumeable", "Plants", "carrot")
+
+items.getItem("Consumeable", "Plants", "potatoes")
+
+items.getItem("Consumeable", "Plants", "corn")
+
+items.getItem("Consumeable", "Plants", "cucumber")
+
+items.getItem("Consumeable", "Plants", "tomatoes")
+
+items.getItem("Consumeable", "Plants", "artichoke")
+
+Ores
+--------------
+
+items.getItem("Resources", "Ores", "tin")
+
+items.getItem("Resources", "Ores", "copper")
+
+items.getItem("Resources", "Ores", "iron")
+
+items.getItem("Resources", "Ores", "gold")
+
+items.getItem("Resources", "Ores", "platinum")
+
+items.getItem("Resources", "Ores", "diamond")
+
+Wood
+--------------
+
+items.getItem("Resources", "Wood", "oak")
+
+items.getItem("Resources", "Wood", "maple")
+
+items.getItem("Resources", "Wood", "mahogony")
+
+items.getItem("Resources", "Wood", "magic")
+
+items.getItem("Resources", "Wood", "super")
+
+Seeds
+--------------
+
+items.getItem("Resources", "Seeds", "carrot")
+
+items.getItem("Resources", "Seeds", "potatoe")
+
+items.getItem("Resources", "Seeds", "corn")
+
+items.getItem("Resources", "Seeds", "cucumber")
+
+items.getItem("Resources", "Seeds", "tomatoe")
+
+items.getItem("Resources", "Seeds", "artichoke")
+
+Bars
+--------------
+
+items.getItem("Resources", "Bars", "bronze")
+
+items.getItem("Resources", "Bars", "iron")
+
+items.getItem("Resources", "Bars", "gold")
+
+items.getItem("Resources", "Bars", "platinum")
+
+items.getItem("Resources", "Bars", "diamond")
+
+Bronze
+--------------
+
+items.getItem("Armor", "Bronze", "helm")
+
+items.getItem("Armor", "Bronze", "chest")
+
+items.getItem("Armor", "Bronze", "legs")
+
+items.getItem("Armor", "Bronze", "boots")
+
+items.getItem("Armor", "Bronze", "shield")
+
+Iron
+--------------
+
+items.getItem("Armor", "Iron", "helm")
+
+items.getItem("Armor", "Iron", "chest")
+
+items.getItem("Armor", "Iron", "legs")
+
+items.getItem("Armor", "Iron", "boots")
+
+items.getItem("Armor", "Iron", "shield")
+
+Gold
+--------------
+
+items.getItem("Armor", "Gold", "helm")
+
+items.getItem("Armor", "Gold", "chest")
+
+items.getItem("Armor", "Gold", "legs")
+
+items.getItem("Armor", "Gold", "boots")
+
+items.getItem("Armor", "Gold", "shield")
+
+Platinum
+--------------
+
+items.getItem("Armor", "Platinum", "helm")
+
+items.getItem("Armor", "Platinum", "chest")
+
+items.getItem("Armor", "Platinum", "legs")
+
+items.getItem("Armor", "Platinum", "boots")
+
+items.getItem("Armor", "Platinum", "shield")
+
+Diamond
+--------------
+
+items.getItem("Armor", "Diamond", "helm")
+
+items.getItem("Armor", "Diamond", "chest")
+
+items.getItem("Armor", "Diamond", "legs")
+
+items.getItem("Armor", "Diamond", "boots")
+
+items.getItem("Armor", "Diamond", "shield")
+
+Bronze
+--------------
+
+items.getItem("Weapon", "Bronze", "mace")
+
+items.getItem("Weapon", "Bronze", "sword")
+
+items.getItem("Weapon", "Bronze", "axe")
+
+items.getItem("Weapon", "Bronze", "pickaxe")
+
+Iron
+--------------
+
+items.getItem("Weapon", "Iron", "mace")
+
+items.getItem("Weapon", "Iron", "sword")
+
+items.getItem("Weapon", "Iron", "axe")
+
+items.getItem("Weapon", "Iron", "pickaxe")
+
+Gold
+--------------
+
+items.getItem("Weapon", "Gold", "mace")
+
+items.getItem("Weapon", "Gold", "sword")
+
+items.getItem("Weapon", "Gold", "axe")
+
+items.getItem("Weapon", "Gold", "pickaxe")
+
+Platinum
+--------------
+
+items.getItem("Weapon", "Platinum", "mace")
+
+items.getItem("Weapon", "Platinum", "sword")
+
+items.getItem("Weapon", "Platinum", "axe")
+
+items.getItem("Weapon", "Platinum", "pickaxe")
+
+Diamond
+--------------
+
+items.getItem("Weapon", "Diamond", "mace")
+
+items.getItem("Weapon", "Diamond", "sword")
+
+items.getItem("Weapon", "Diamond", "axe")
+
+items.getItem("Weapon", "Diamond", "pickaxe")
+
+Bow
+--------------
+
+items.getItem("Weapon", "Bow", "oak")
+
+items.getItem("Weapon", "Bow", "maple")
+
+items.getItem("Weapon", "Bow", "mahogony")
+
+items.getItem("Weapon", "Bow", "magic")
+
+items.getItem("Weapon", "Bow", "super")
+
+Arrows
+--------------
+
+items.getItem("Weapon", "Arrows", "bronze")
+
+items.getItem("Weapon", "Arrows", "iron")
+
+items.getItem("Weapon", "Arrows", "gold")
+
+items.getItem("Weapon", "Arrows", "platinum")
+
+items.getItem("Weapon", "Arrows", "diamond")
+
+Stones
+--------------
+
+items.getItem("Magic", "Stones", "teleport")
+
+items.getItem("Magic", "Stones", "shield")
+
+items.getItem("Magic", "Stones", "attack")
+
+items.getItem("Magic", "Stones", "archer")
+
+items.getItem("Magic", "Stones", "mining")
+
+items.getItem("Magic", "Stones", "hunting")
+
+items.getItem("Magic", "Stones", "woodcutting")

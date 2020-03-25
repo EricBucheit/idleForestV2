@@ -1,0 +1,51 @@
+class Entity : {
+	target = false;
+	name = name;
+	password = "";
+	info = "DESCRIBE ME"
+	body = new RigidBody()
+	status = new Status();
+	skills = new Skills()
+	armor = new Armor()
+	home = new Home();
+	inventory = new Inventory;
+	magic = new Magic;
+	range = new Range;
+	summoning = new Summoning : {
+			singleton : Entity
+			singleton : Entity
+			singleton : Entity
+	}
+}
+
+
+Game = {
+	
+	map : new Map()
+
+	handlers: new Handlers() : {
+		clickHandler()
+		doubleClickHandler()
+		keyHandler()
+		loadHandler()
+		saveHandler()
+	}
+
+	currentplayer : entity : new Entity()
+
+	enemies : 	[
+					entity : new Entity(enemyTemplate)
+				]
+
+	ores : 	[
+					entity : new Entity(oreTemplate) 
+				]
+
+	trees : 	[
+					entity : new Enity(treeTemplate)
+				]
+	npc :		[ 
+					entity : new Entity(npcTemplate)
+				]
+
+}

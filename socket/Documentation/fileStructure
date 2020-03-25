@@ -1,0 +1,52 @@
+index.js - server config, inlet, outlet
+	Documentation - You are here.
+
+	GlobalSettings - holds configuration for the games balance, difficulty, drops, etc //needs implementation
+	
+	Game
+		Events
+			Inputs - Catches the inputs from client, routes to Logic/inputHandlers for logic
+			PlayerConnect - catches player connect and disconnect
+		Logic
+			instantiate - hold main instantiation of objects
+			update - update loop, called once per update call
+			Interactions - Holds all Object Interactions, walk/fight/xp
+			InputHandlers - routed from Events, Hold Logic for Click,keys, etc
+		
+		Helpers
+			bodies
+				collision - handles collision
+				rigidBody - handles coordinates and size
+				vector2d - x,y object
+				index - collects files contents and exports from on place, also creates body function
+			functions - randomInt, scale, timer
+			index.js - collects all Helpers and exports them
+
+		Objects
+			Entity
+				Action - Hold what your are doing, and switches for different 		   actions
+				Armor - holds what armor you currently have equipped,handles 		 functions to equip and dequip items;
+				Info - current info about your character, such as name, 		   description and death count
+				Navigation - where you are, where your going, and where your 			  facing
+				Skills - All the skills associated with your character
+				
+				Template - creates abiliity to use new Entity(Template.method) and get an 			instance of Entity with those settings
+					animal
+					enemy
+					npc
+					ore
+					player
+					tree
+			Inventory - Inventory system with add, subtract, and gold.
+			Items - All items in the game, should be singleton instance on 
+					the main game structure *Only built Once.
+
+	Testing - Same file structure as above , tests all objects;
+		Helpers
+		Logic
+		Objects
+	ItemReference.txt - A way to see all the items in a list in the game
+						Has examples to get every item in the game
+
+
+

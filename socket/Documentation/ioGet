@@ -1,0 +1,28 @@
+
+connection () {
+	create connection
+}
+
+disconnect () {
+	resolve and saveplayer
+}
+
+newPlayer () {
+	create new Entity
+	add entity to current players;
+}
+
+update () {
+	update call from the ui, runs main game update loop
+}
+
+save () {
+	saves current player to database
+	=>api call
+}
+
+load() {
+	loads player with credentials
+	=>api call
+}
+

@@ -1,0 +1,10 @@
+Gamestate is sent to client which in our case is multiplayer
+
+
+gameState() {
+	send current game state:
+		current users player
+		enemies
+		resources
+		npcs
+}
