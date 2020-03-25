@@ -189,10 +189,10 @@ export default class Entity {
 		let scaledHunger = this.scale(player.lifeStats.hunger.current, 0, player.lifeStats.hunger.value, 0 , 50)
 		this.Render.img(statusBar.hunger, xOffset, 30, scaledHunger, 15, canvas.ctx);
 
-		this.Render.text("HP:", 0, 8, "8", canvas.ctx, "purple")
-		this.Render.text("Thirst:", 0, 24, "8", canvas.ctx, "purple")
-		this.Render.text("Hunger:", 0, 40, "8", canvas.ctx, "purple")
-		this.Render.text("Level:" + player.info.currentLevel, 6, 54, "10", canvas.ctx, "purple");
+		this.Render.text("HP:", 5, 8, "8", canvas.ctx, "purple")
+		this.Render.text("Thirst:", 5, 24, "8", canvas.ctx, "purple")
+		this.Render.text("Hunger:", 5, 40, "8", canvas.ctx, "purple")
+		this.Render.text("Level:" + player.info.currentLevel, 10, 54, "10", canvas.ctx, "purple");
 
   	}
 

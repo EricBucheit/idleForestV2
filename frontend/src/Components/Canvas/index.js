@@ -128,7 +128,9 @@ export default class Canvas extends React.Component {
             <canvas ref={this.canvasRef}
                     width={480} 
                     height={480}
-                    style={{    
+                    style={{   
+                                outline: "none",
+                                borderRadius:10,
                                 padding: 0,
                                 margin: "auto",
                                 display: "block",

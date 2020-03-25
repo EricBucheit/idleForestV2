@@ -27,11 +27,8 @@ export default class Skills {
 			let xp = player.skills[skill].xp;
 			let next_level = player.skills[skill].threshold;
 
-			canvas.ctx.fillStyle = 'rgba(179, 0, 9,0.4)';
-			canvas.ctx.fillRect(360, y + 10,120,25);
-
 			this.render.textLine(`${skill} : ${current_lvl + boost}/${value}`, x, y += 20, 9, canvas.ctx, "white");
-			this.render.textLine(`XP: ${xp} / ${next_level}`, x + 30, y += 12, 9, canvas.ctx, "white");
+			this.render.textLine(`XP: ${xp} / ${next_level}`, x + 10, y += 12, 9, canvas.ctx, "white");
 		}
 
 		this.render.textLine(`Current Level:${player.info.currentLevel}`, x, y += 40, 9, canvas.ctx, "white");
