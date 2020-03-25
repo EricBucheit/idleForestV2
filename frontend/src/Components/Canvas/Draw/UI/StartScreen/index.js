@@ -7,9 +7,8 @@ import {
 	playerHair
 } from '../../../../../Images'
 import Render from '../../Render'
-import {RigidBody, ClickHandler, Timer, userMessage} from '../../../Helpers'
+import {RigidBody, ClickHandler, userMessage, button} from '../../../Helpers'
 import Letters from './letters'
-import {music} from '../../../../../Sounds'
 
 export default class StartScreen {
 	constructor() {
@@ -237,50 +236,8 @@ export default class StartScreen {
 		}
 	}
 
-	button(settings) {
-
-		let img = settings.img || false;
-		let info = settings.info || ""
-		let x = settings.pos.x || 0;
-		let y = settings.pos.y || 0;
-		let width = settings.pos.width || 200;
-		let height = settings.pos.height || 100;
-		let text = {
-			x : settings.text.x || 0,
-			y : settings.text.y || 0,
-		}
-		let color = settings.text.color || "white"
-		let fontsize = settings.text.fontsize || 12;
-		let onClick = settings.onClick || function empty() {}
-
-		return({
-			img : img,
-			color: color,
-			body : new RigidBody({x: x, y : y, width: width, height: height}),
-			draw : new Render(),
-			clickHandler : new ClickHandler(),
-			info: info,
-			display : function(ctx) {
-				if (this.img) {
-					this.draw.img(this.img, this.body.pos.x, this.body.pos.y, this.body.size.x, this.body.size.y, ctx);
-				}
-				this.draw.textLine(this.info, this.body.pos.x + text.x, this.body.pos.y + text.y, fontsize, ctx, this.color)
-			},
-			onClick : function (mouse, canvas) {
-				let click = this.clickHandler.click(mouse, this, canvas);
-				if (click) {
-					return true
-				}
-				return false;
-			},
-			changeInfo(info) {
-				this.info = info
-			}
-		})
-	}
-
 	makeBackground() {
-		this.background = this.button({
+		this.background = button({
 							img : background.bankBackGround,
 							info: "IDLE FOREST",
 							pos : {
@@ -299,7 +256,7 @@ export default class StartScreen {
 
 	makeLogoutScreen() {
 
-		this.resumeButton = this.button({
+		this.resumeButton = button({
 								img : buttons.greenButton,
 								info: "Resume",
 								pos : {
@@ -316,7 +273,7 @@ export default class StartScreen {
 								},
 							})
 
-		this.logoutButton = this.button({
+		this.logoutButton = button({
 								img : buttons.redButton,
 								info: "Logout",
 								pos : {
@@ -335,7 +292,7 @@ export default class StartScreen {
 	}
 
 	makeStartScreen() {
-			this.startButton = this.button({
+			this.startButton = button({
 								img : buttons.greenButton,
 								info: "Start",
 								pos : {
@@ -352,7 +309,7 @@ export default class StartScreen {
 								},
 							})
 
-			this.optionsButton = this.button({
+			this.optionsButton = button({
 								img : buttons.greenButton,
 								info: "Options",
 								pos : {
@@ -368,7 +325,7 @@ export default class StartScreen {
 									fontsize : 40,
 								},
 							})
-			this.creditsButton = this.button({
+			this.creditsButton = button({
 								img : buttons.aquaButton,
 								info: "Credits",
 								pos : {
@@ -387,7 +344,7 @@ export default class StartScreen {
 		}
 
 		makeOptionScreen() {
-			this.optionsBackButton = this.button({
+			this.optionsBackButton = button({
 								img : buttons.redButton,
 								info: "Back",
 								pos : {
@@ -403,7 +360,7 @@ export default class StartScreen {
 									fontsize : 40,
 								},
 							})
-			this.soundButton = this.button({
+			this.soundButton = button({
 								img : buttons.aquaButton,
 								info: "Sound On",
 								pos : {
@@ -419,7 +376,7 @@ export default class StartScreen {
 									fontsize : 30,
 								},
 							})
-			this.difficultyButton = this.button({
+			this.difficultyButton = button({
 								img : buttons.aquaButton,
 								info: "Easy",
 								pos : {
@@ -439,7 +396,7 @@ export default class StartScreen {
 		}
 
 		makeCreditScreen() {
-			this.creditsBackButton = this.button({
+			this.creditsBackButton = button({
 								img : buttons.redButton,
 								info: "Back",
 								pos : {
@@ -458,18 +415,18 @@ export default class StartScreen {
 		}
 
 		makeChooseNameScreen(letters) {
-			let deleteButton = this.button({
+			let deleteButton = button({
 							img : buttons.redButton,
 							info: "Del",
 							pos : {
 								x: 390, 
-								y : 247, 
-								width: 80, 
-								height: 40,
+								y : 250, 
+								width: 90, 
+								height: 45,
 							},
 
 							text : {
-								x: 20,
+								x: 30,
 								y: 25,
 								fontsize : 15,
 							},
@@ -484,8 +441,8 @@ export default class StartScreen {
 				deleteButton: deleteButton,
 
 				display(ctx) {
-					this.draw.textLine(this.label, 120, 330, 35, ctx, "blue");
-					this.draw.textLine(this.value, 240, 330, 35, ctx, "blue");
+					this.draw.textLine(this.label, 120, 330, 35, ctx, "white");
+					this.draw.textLine(this.value, 240, 330, 35, ctx, "white");
 					for (let x = 0; x < this.letters.length; x++) {
 						this.letters[x].display(ctx)
 					}
@@ -519,7 +476,7 @@ export default class StartScreen {
 				}
 			}
 			
-			this.chooseNameNextButton = this.button({
+			this.chooseNameNextButton = button({
 							img : buttons.greenButton,
 							info: "Next",
 							pos : {
@@ -536,7 +493,7 @@ export default class StartScreen {
 							},
 			})
 
-			this.chooseNameBackButton = this.button({
+			this.chooseNameBackButton = button({
 							img : buttons.redButton,
 							info: "Back",
 							pos : {
@@ -556,12 +513,12 @@ export default class StartScreen {
 		}
 
 		makeChoosePasswordScreen(letters) {
-			let deleteButton = this.button({
+			let deleteButton = button({
 							img : buttons.redButton,
 							info: "Del",
 							pos : {
 								x: 390, 
-								y : 247, 
+								y : 250, 
 								width: 80, 
 								height: 40,
 							},
@@ -583,8 +540,8 @@ export default class StartScreen {
 				deleteButton: deleteButton,
 
 				display(ctx) {
-					this.draw.textLine(this.label, 120, 330, 35, ctx, "blue");
-					this.draw.textLine(this.mask, 280, 330, 35, ctx, "blue");
+					this.draw.textLine(this.label, 120, 330, 35, ctx, "white");
+					this.draw.textLine(this.mask, 280, 330, 35, ctx, "white");
 
 					for (let x = 0; x < this.letters.length; x++) {
 						this.letters[x].display(ctx)
@@ -623,7 +580,7 @@ export default class StartScreen {
 				}
 			}
 			
-			this.choosePasswordNextButton = this.button({
+			this.choosePasswordNextButton = button({
 							img : buttons.greenButton,
 							info: "Next",
 							pos : {
@@ -640,7 +597,7 @@ export default class StartScreen {
 							},
 			})
 
-			this.choosePasswordBackButton = this.button({
+			this.choosePasswordBackButton = button({
 							img : buttons.redButton,
 							info: "Back",
 							pos : {
@@ -661,8 +618,8 @@ export default class StartScreen {
 
 
 		characterPrevButtons = (x, y) => {
-			return (this.button({
-							img : buttons.greenButton,
+			return (button({
+							img : buttons.aquaButton,
 							info: "<",
 							pos : {
 								x: x, 
@@ -675,14 +632,14 @@ export default class StartScreen {
 								x: 20,
 								y: 30,
 								fontsize : 30,
-								color: "purple"
+								color: "white"
 							},
 			}))
 		}
 
 		characterNextButtons = (x, y) => {
-			return(this.button({
-							img : buttons.greenButton,
+			return(button({
+							img : buttons.aquaButton,
 							info: ">",
 							pos : {
 								x: x, 
@@ -695,14 +652,14 @@ export default class StartScreen {
 								x: 20,
 								y: 30,
 								fontsize : 30,
-								color: "purple"
+								color: "white"
 							},
 			}))
 
 		}
 		
 		makeChoosePlayerScreen() {
-			this.choosePlayerNextButton = this.button({
+			this.choosePlayerNextButton = button({
 							img : buttons.greenButton,
 							info: "Play",
 							pos : {
@@ -719,7 +676,7 @@ export default class StartScreen {
 							},
 			})
 
-			this.choosePlayerBackButton = this.button({
+			this.choosePlayerBackButton = button({
 							img : buttons.redButton,
 							info: "Back",
 							pos : {
@@ -741,25 +698,25 @@ export default class StartScreen {
 
 			this.player = {
 				draw : new Render(),
-				
+
 				display : function(ctx) {
 					this.displayCharacter(ctx);
 					this.displayButtons(ctx);
 				},
 
 				displayCharacter(ctx) {
-					let x = 205;
-					let y = 200;
+					let x = 175;
+					let y = 175;
 					
 					let skin = this.skin.types[this.skin.index].img.images
 					let shirt = this.shirt.types[this.shirt.index].img.images
 					let pants = this.pants.types[this.pants.index].img.images
 					let hair = this.hair.types[this.hair.index].img.images
 					
-					this.draw.img(skin['idle'].getImg("down", 0), x, y, 64,64, ctx)
-					this.draw.img(shirt['idle'].getImg("down", 0), x, y, 64,64, ctx)
-					this.draw.img(pants['idle'].getImg("down", 0), x, y, 64,64, ctx)
-					this.draw.img(hair['idle'].getImg("down", 0), x, y, 64,64, ctx)
+					this.draw.img(skin['idle'].getImg(this.direction.face[this.direction.index], 0), x, y, 128,128, ctx)
+					this.draw.img(shirt['idle'].getImg(this.direction.face[this.direction.index], 0), x, y, 128,128, ctx)
+					this.draw.img(pants['idle'].getImg(this.direction.face[this.direction.index], 0), x, y, 128,128, ctx)
+					this.draw.img(hair['idle'].getImg(this.direction.face[this.direction.index], 0), x, y, 128,128, ctx)
 
 				},
 
@@ -776,6 +733,9 @@ export default class StartScreen {
 					this.pants.prevButton.display(ctx);
 					this.pants.nextButton.display(ctx);
 
+					this.direction.prevButton.display(ctx);
+					this.direction.nextButton.display(ctx);
+
 				},
 
 				onClick(canvas, mouse) {
@@ -783,6 +743,55 @@ export default class StartScreen {
 					this.hair.onClick(canvas, mouse);
 					this.shirt.onClick(canvas, mouse);
 					this.pants.onClick(canvas, mouse);
+					this.direction.onClick(canvas, mouse);
+
+				},
+
+				direction: {
+					face : [
+							"down",
+							"right",
+							"up",
+							"left",
+							 ],
+					index : 0,
+
+					onClick : function(canvas, mouse) {
+						if (this.prevButton.onClick(canvas, mouse)) {
+							this.index--;
+							if (this.index < 0) this.index = this.face.length - 1;
+						}
+						if (this.nextButton.onClick(canvas, mouse)) {
+							this.index++;
+							if (this.index >= this.face.length) this.index = 0;
+						}
+					},
+
+					prevButton : characterPrevButtons(130, 325),
+					nextButton : characterNextButtons(290, 325),
+				},
+				hair: {
+					types : [
+							 {img: playerHair.black, name: "black"},
+							 {img: playerHair.brown, name: "brown"},
+							 {img: playerHair.gold, name: "gold"},
+							 {img: playerHair.red, name: "red"},
+							 {img: playerHair.darkRed, name: "darkRed"},
+							 ],
+					index: 0,
+
+					onClick : function(canvas, mouse) {
+						if (this.prevButton.onClick(canvas, mouse)) {
+							this.index--;
+							if (this.index < 0) this.index = this.types.length - 1;
+						}
+						if (this.nextButton.onClick(canvas, mouse)) {
+							this.index++;
+							if (this.index >= this.types.length) this.index = 0;
+						}
+					},
+					prevButton : characterPrevButtons(130, 125),
+					nextButton : characterNextButtons(290, 125),
 				},
 
 				skin: {
@@ -809,32 +818,8 @@ export default class StartScreen {
 						}
 					},
 
-					prevButton : characterPrevButtons(160, 150),
-					nextButton : characterNextButtons(260, 150),
-				},
-
-				hair: {
-					types : [
-							 {img: playerHair.black, name: "black"},
-							 {img: playerHair.brown, name: "brown"},
-							 {img: playerHair.gold, name: "gold"},
-							 {img: playerHair.red, name: "red"},
-							 {img: playerHair.darkRed, name: "darkRed"},
-							 ],
-					index: 0,
-
-					onClick : function(canvas, mouse) {
-						if (this.prevButton.onClick(canvas, mouse)) {
-							this.index--;
-							if (this.index < 0) this.index = this.types.length - 1;
-						}
-						if (this.nextButton.onClick(canvas, mouse)) {
-							this.index++;
-							if (this.index >= this.types.length) this.index = 0;
-						}
-					},
-					prevButton : characterPrevButtons(160, 200),
-					nextButton : characterNextButtons(260, 200),
+					prevButton : characterPrevButtons(130, 175),
+					nextButton : characterNextButtons(290, 175),
 				},
 
 				shirt: {
@@ -860,8 +845,8 @@ export default class StartScreen {
 						}
 					},
 
-					prevButton : characterPrevButtons(160, 250),
-					nextButton : characterNextButtons(260, 250),
+					prevButton : characterPrevButtons(130, 225),
+					nextButton : characterNextButtons(290, 225),
 				},
 
 				pants: {
@@ -887,8 +872,8 @@ export default class StartScreen {
 						}
 					},
 
-					prevButton : characterPrevButtons(160, 300),
-					nextButton : characterNextButtons(260, 300),
+					prevButton : characterPrevButtons(130, 275),
+					nextButton : characterNextButtons(290, 275),
 
 				}
 			}

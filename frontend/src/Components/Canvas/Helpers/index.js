@@ -106,7 +106,7 @@ function Timer (time) {
             getTimeLeft() {
                 let date = new Date();
                 let newTime = date.getTime()
-                return (expiration - newTime);
+                return (this.expiration - newTime);
             },
 
             setExpiration : function(newExpiration) {
@@ -174,45 +174,44 @@ function userMessage(x = 175, y = 250) {
 }
 
 function button(settings) {
-        let img = settings.img || false;
-        let info = settings.info || ""
-        let x = settings.pos.x || 0;
-        let y = settings.pos.y || 0;
-        let width = settings.pos.width || 200;
-        let height = settings.pos.height || 100;
-        let text = {
-            x : settings.text.x || 0,
-            y : settings.text.y || 0,
-        }
-        let color = settings.text.color || "white"
-        let fontsize = settings.text.fontsize || 12;
-        let onClick = settings.onClick || function empty() {}
-
-        return({
-            img : img,
-            color: color,
-            body : new RigidBody({x: x, y : y, width: width, height: height}),
-            draw : new Render(),
-            clickHandler : new ClickHandler(),
-            info: info,
-            display : function(ctx) {
-                if (this.img) {
-                    this.draw.img(this.img, this.body.pos.x, this.body.pos.y, this.body.size.x, this.body.size.y, ctx);
-                }
-                this.draw.textLine(this.info, this.body.pos.x + text.x, this.body.pos.y + text.y, fontsize, ctx, this.color)
-            },
-            onClick : function (mouse, canvas) {
-                let click = this.clickHandler.click(mouse, this, canvas);
-                if (click) {
-                    return true
-                }
-                return false;
-            },
-            changeInfo(info) {
-                this.info = info
-            }
-        })
+    let img = settings.img || false;
+    let info = settings.info || ""
+    let x = settings.pos.x || 0;
+    let y = settings.pos.y || 0;
+    let width = settings.pos.width || 200;
+    let height = settings.pos.height || 100;
+    let text = {
+        x : settings.text.x || 0,
+        y : settings.text.y || 0,
     }
+    let color = settings.text.color || "white"
+    let fontsize = settings.text.fontsize || 12;
+
+    return({
+        img : img,
+        color: color,
+        body : new RigidBody({x: x, y : y, width: width, height: height}),
+        draw : new Render(),
+        clickHandler : new ClickHandler(),
+        info: info,
+        display : function(ctx) {
+            if (this.img) {
+                this.draw.img(this.img, this.body.pos.x, this.body.pos.y, this.body.size.x, this.body.size.y, ctx);
+            }
+            this.draw.textLine(this.info, this.body.pos.x + text.x, this.body.pos.y + text.y, fontsize, ctx, this.color)
+        },
+        onClick : function (mouse, canvas) {
+            let click = this.clickHandler.click(mouse, this, canvas);
+            if (click) {
+                return true
+            }
+            return false;
+        },
+        changeInfo(info) {
+            this.info = info
+        }
+    })
+}
 
 
 export {
@@ -221,4 +220,5 @@ export {
 	Timer,
     ClickHandler,
     userMessage,
+    button
 }

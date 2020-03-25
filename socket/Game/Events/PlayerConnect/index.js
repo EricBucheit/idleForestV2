@@ -9,7 +9,6 @@ function PlayerConnect(socket, gameState) {
 	})
 
 	socket.on('login', (data) => {
-		console.log("TRYING LOGIN");
 		instantiate = new Instantiate;
 		instantiate.checkLogin(socket, gameState, data)
 	})

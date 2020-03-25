@@ -1606,7 +1606,7 @@ let homeImages = {
 		},
 
 		roof : {
-			pos : singleImage(144,200,50,100),
+			pos : mapTile(144,200,50,100),
 			img : singleImage(wellImage),
 
 		}
