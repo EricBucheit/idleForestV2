@@ -7,7 +7,7 @@ import {
 	playerHair
 } from '../../../../../Images'
 import Render from '../../Render'
-import {RigidBody, ClickHandler, userMessage, button} from '../../../Helpers'
+import {userMessage, button} from '../../../Helpers'
 import Letters from './letters'
 
 export default class StartScreen {

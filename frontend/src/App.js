@@ -1,6 +1,6 @@
 import React from 'react'
 import Canvas from "./Components/Canvas"
-import styles from "./App.css"
+import "./App.css"
 
 class App extends React.Component {
   render() {

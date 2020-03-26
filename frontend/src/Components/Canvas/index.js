@@ -6,8 +6,7 @@ import Draw from './Draw'
 import InputHandler from '../InputHandlers'
 import StartScreen from './Draw/UI/StartScreen'
 import {Timer, userMessage} from './Helpers'
-import {music, playSong} from '../../Sounds'
-let socket = socketIOClient("http://localhost:4200")
+let socket = socketIOClient(process.env.REACT_APP_SOCKETURL)
 
 export default class Canvas extends React.Component {
 
@@ -97,10 +96,6 @@ export default class Canvas extends React.Component {
                     ores : this.state.data.ores,
                     animals : this.state.data.animals,
                     npcs : this.state.data.npcs,
-                }
-                if (entities.currentPlayer) {
-                    console.log(entities.currentPlayer.skills)
-
                 }
 
                 if (entities.currentPlayer) {

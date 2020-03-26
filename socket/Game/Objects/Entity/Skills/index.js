@@ -50,7 +50,7 @@ class Skills {
 			},
 
 			package : function () {
-
+				
 			},
 
 			loadDB(skill) {

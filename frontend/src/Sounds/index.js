@@ -5,7 +5,6 @@ import hit from './player/swing/hit.wav'
 import hit1 from './player/swing/hit1.wav'
 import oreHit from './player/swing/sword-unsheathe.wav'
 import magic from './player/magic/spell.wav'
-import mainScreenMusic from './music/mainScreen.wav'
 import homeScreenMusic from './music/homeMusic.mp3'
 
 
