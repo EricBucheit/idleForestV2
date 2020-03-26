@@ -9,7 +9,7 @@ class UIPackage {
 	            info: {
 	            	type : contents[x].info.type,
 	            },
-	            lifeStats : {
+	            skills : {
 	            	health: {
 	            		value: contents[x].skills.health.value,
 	            		current: contents[x].skills.health.current
@@ -32,15 +32,8 @@ class UIPackage {
 	}
 
 	packagePayload(socket, gameState, payload) {
-		let playerPackage = [];
 		let user = gameState.players[socket.id]
 		let player =  user.player;
-		// for (let id in gameState.players) {
-		// 	playerPackage.push({
-		// 	    body : gameState.players[id].player.body,
-		// 	    actionButtons: gameState.players[id].player.action.buttons
-		// 	})
-		// }
 
 		let bank = false
 		let menu = false
@@ -88,12 +81,6 @@ class UIPackage {
 		let currentPlayerPackage = {
 			body : player.body,
 			actionButtons: player.action.buttons,
-			inventoryButtons: gameState.UIbuttons.inventoryButtons,
-			lifeStats : {
-				health: player.skills.health,
-				thirst: player.skills.thirst,
-				hunger: player.skills.hunger,
-			},
 			navigation: {
 				direction: player.navigation.direction,
 			},
@@ -170,13 +157,10 @@ class UIPackage {
 
 		let levelPackage = {
 			body: gameState.players[socket.id].level.body,
-			nextLevel: gameState.players[socket.id].level.nextLevel,
-			prevLevel : gameState.players[socket.id].level.prevLevel,
 			inventory : gameState.players[socket.id].level.newInventory.package(),
 			
 		}
 
-		payload.players = playerPackage;
 		payload.currentPlayer = currentPlayerPackage;
 		payload.enemies = this.packageEntity(gameState.players[socket.id].enemies);
 		payload.ores = this.packageEntity(gameState.players[socket.id].ores);
