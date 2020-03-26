@@ -30,18 +30,4 @@ export default class Level {
         }
 	}
 
-
-	level(canvas, map) {
-		if (map) {
-            let level = map.body;
-            for (let x = level.pos.x; x <= level.size.x; x++) {
-                for (let y = level.pos.y; y <= level.size.y; y++) {
-                    canvas.ctx.beginPath();
-                    canvas.ctx.strokeStyle = "black"
-                    canvas.ctx.rect(x * 32, y*32, 32, 32);
-                    canvas.ctx.stroke();
-                }
-            }
-        }
-	}
 }

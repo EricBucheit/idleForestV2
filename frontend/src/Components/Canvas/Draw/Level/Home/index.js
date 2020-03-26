@@ -2,54 +2,7 @@ import {homeImages, buttons} from '../../../../../Images'
 import Render from '../../Render'
 import Bank from "./Bank"
 import Menu from './Menu'
-function randomInt(min, max) {
-   	return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-function Timer (time) {
-    let date = new Date();
-    let expiration = date.getTime() + time;
-    return ({
-            date : date,
-            time : time,
-            expiration: expiration,
-            
-            reset: function() {
-                let date = new Date();
-                let newTime = date.getTime()
-                this.expiration = newTime + this.time;
-            },
-
-            isDone() {
-                let date = new Date();
-                let newTime = date.getTime()
-                if (newTime > this.expiration) {
-                    return (true)
-                }
-                return false;
-            },
-
-            check : function() {
-                if (this.isDone()) {
-                    this.reset();
-                    return (true)
-                }
-                return false
-            },
-
-            getTimeLeft() {
-                let date = new Date();
-                let newTime = date.getTime()
-                return (expiration - newTime);
-            },
-
-            setExpiration : function(newExpiration) {
-                this.time = newExpiration;
-                this.reset()
-            }
-        })
-}
-
+import {randomInt, Timer} from '../../../Helpers'
 
 export default class Home {
 	constructor() {

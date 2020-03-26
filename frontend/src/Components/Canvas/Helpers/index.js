@@ -1,11 +1,16 @@
 import Render from '../Draw/Render'
 
+function randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 class Vector2d {
 	constructor(x,y) {
 		this.x = x;
 		this.y = y;
 	}
 }
+
 
 class RigidBody {
 	constructor(settings) {
@@ -220,5 +225,6 @@ export {
 	Timer,
     ClickHandler,
     userMessage,
-    button
+    button,
+    randomInt,
 }

@@ -5,9 +5,7 @@ import styles from "./App.css"
 class App extends React.Component {
   render() {
     return (
-    	<div style={{width: window.innerWidth, height:window.innerHeight, backGroundColor: "black"}}>
-        	<Canvas />
-        </div>
+        <Canvas />
     );
   }
 }

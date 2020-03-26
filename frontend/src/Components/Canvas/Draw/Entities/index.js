@@ -180,13 +180,13 @@ export default class Entity {
 		this.Render.img(statusBar.empty, xOffset, 15, 50, 15, canvas.ctx);
 		this.Render.img(statusBar.empty, xOffset, 30, 50, 15, canvas.ctx);
 
-		let scaledHealth = this.scale(player.lifeStats.health.current, 0, player.lifeStats.health.value, 0 , 50)
+		let scaledHealth = this.scale(player.skills.health.current, 0, player.skills.health.value, 0 , 50)
 		this.Render.img(statusBar.health, xOffset, 0, scaledHealth, 15, canvas.ctx);
 
-		let scaledThirst = this.scale(player.lifeStats.thirst.current, 0, player.lifeStats.thirst.value, 0 , 50)
+		let scaledThirst = this.scale(player.skills.thirst.current, 0, player.skills.thirst.value, 0 , 50)
 		this.Render.img(statusBar.thirst, xOffset, 15, scaledThirst, 15, canvas.ctx);
 
-		let scaledHunger = this.scale(player.lifeStats.hunger.current, 0, player.lifeStats.hunger.value, 0 , 50)
+		let scaledHunger = this.scale(player.skills.hunger.current, 0, player.skills.hunger.value, 0 , 50)
 		this.Render.img(statusBar.hunger, xOffset, 30, scaledHunger, 15, canvas.ctx);
 
 		this.Render.text("HP:", 5, 8, "8", canvas.ctx, "purple")
@@ -202,7 +202,7 @@ export default class Entity {
   		{
   			offset = -10;
   		}
-  		let scaledHealth = this.scale(entity.lifeStats.health.current, 0, entity.lifeStats.health.value, 0 , entity.body.size.x)
+  		let scaledHealth = this.scale(entity.skills.health.current, 0, entity.skills.health.value, 0 , entity.body.size.x)
   		this.Render.img(statusBar.empty, entity.body.pos.x, entity.body.pos.y - offset, entity.body.size.x, 5, canvas.ctx);
 		this.Render.img(statusBar.health,  entity.body.pos.x,  entity.body.pos.y -offset, scaledHealth, 5, canvas.ctx);
 

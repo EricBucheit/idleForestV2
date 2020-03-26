@@ -112,7 +112,7 @@ export default class Canvas extends React.Component {
                 this.Draw.Entity.cornerHealthStats(canvas, entities.currentPlayer)
                 this.Draw.UserInterface.draw(canvas, entities.currentPlayer)
                 this.Draw.BottomPanel.buttons(canvas, entities.currentPlayer)
-                this.Draw.BottomInventoryIcons.buttons(canvas, entities.currentPlayer)
+                this.Draw.BottomInventoryIcons.draw(canvas)
                 this.userMessage.display(canvas.ctx)
 
             }
