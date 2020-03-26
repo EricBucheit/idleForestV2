@@ -18,7 +18,6 @@ export default class Canvas extends React.Component {
           data : false,
           mousePos : false,
         };
-        console.log(window.innerHeight)
 
         this.canvasRef = React.createRef();
         this.Draw = new Draw();
@@ -29,7 +28,7 @@ export default class Canvas extends React.Component {
     }
 
     componentDidMount() {
-        let frameRate = 60
+        let frameRate = 25
         this.frameRateTimer = Timer(1000 / frameRate);
         
         socket.on("game", data => {
@@ -98,6 +97,10 @@ export default class Canvas extends React.Component {
                     ores : this.state.data.ores,
                     animals : this.state.data.animals,
                     npcs : this.state.data.npcs,
+                }
+                if (entities.currentPlayer) {
+                    console.log(entities.currentPlayer.skills)
+
                 }
 
                 if (entities.currentPlayer) {

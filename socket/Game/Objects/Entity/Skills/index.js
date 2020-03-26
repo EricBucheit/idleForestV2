@@ -49,6 +49,10 @@ class Skills {
 				})
 			},
 
+			package : function () {
+
+			},
+
 			loadDB(skill) {
 				this.value = skill.value;
 				this.current = skill.current;

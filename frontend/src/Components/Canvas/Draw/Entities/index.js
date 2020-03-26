@@ -242,7 +242,6 @@ export default class Entity {
 	                	}
                 	} else if (entity[x].info.type === "animal"){
                 		if (entity[x].animation.img) {
-                			console.log()
 	                		let imgs = animals[entity[x].animation.img].images;
 		 					this.Render.img(imgs[entity[x].action].getImg(entity[x].navigation.direction, entity[x].animation.index), entity[x].body.pos.x, entity[x].body.pos.y, entity[x].body.size.x, entity[x].body.size.y, canvas.ctx)
 		                    this.health(canvas, entity[x])

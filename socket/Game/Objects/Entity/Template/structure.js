@@ -34,8 +34,8 @@ function EntityStructure(items) {
 				y : RandomInt(100,400),
 				width : 45,
 				height : 45,
-				velocityX : 3,
-				velocityY : 3
+				velocityX : 5,
+				velocityY : 5
 		},
 
 		skills : {
