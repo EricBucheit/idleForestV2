@@ -174,8 +174,6 @@ class MoveHandler {
 				}
 			}
 		}
-
-
 	}
 
 	craftCollect(socket, gameState, mouse) {

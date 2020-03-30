@@ -3,7 +3,6 @@ const Collision = require('../collision');
 const {RandomInt} = require('../../functions')
 
 class RigidBody {
-
 	constructor(settings) {
 		this.pos = new Vector2d(settings.x,settings.y);
 		this.center = new Vector2d(settings.width / 2, settings.height / 2);
@@ -68,10 +67,6 @@ class RigidBody {
 			return ("left");
 		}
 		return ('down');
-	}
-
-	moveLogic() {
-
 	}
 
 	moveTo(target) {
