@@ -1,29 +1,18 @@
 const {Timer} = require ("../../Helpers")
 const Inventory = require('../Inventory')
 const Grid = require('../../Helpers/Grid')
-
+const {craftingSettings} = require('../../../GlobalSettings')
 class Crafting {
 	constructor(items) {
 		this.finished = new Inventory(items, {max: 48, stack: false});
 		this.queue = [];
-		this.grid = new Grid({
-	                      x: 70,
-	                      y: 200,
-	                      width : 12,
-	                      height : 4,
-	                      cellWidth : 20,
-	                      cellHeight: 20,
-	                      labelOffsetX : 5,
-	                      labelOffsetY : 5,
-	                      labelSize : 10,
-	                    })
+		this.grid = new Grid(craftingSettings.grid)
 	}
 
 	logFinished() {
 		for (let item in this.finished.spaces) {
 			if(this.finished.spaces[item].id !== -1 ) {
 				console.log(Math.ceil(this.finished.spaces[item].timer.getTimeLeft() / 1000));
-
 			}
 		}
 	}
@@ -109,11 +98,7 @@ class Crafting {
 
 	collect(inventory, index) {
 		if (this.finished.spaces[index].id !== -1 && this.finished.spaces[index].timer.isDone()) {
-			// if (inventory.hasSpace().found) {
-			// 	inventory.add(this.finished.transfer(index, 1))
-			// }
 			this.finished.transferItem(inventory, index, 1);
-
 		}
 
 	}

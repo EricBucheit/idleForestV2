@@ -1,5 +1,5 @@
 const {RigidBody} = require('../../Helpers')
-
+const {bottomPanelSettings} = require('../../../GlobalSettings')
 class UIButtons {
 	constructor() {
 		this.inventoryButtons = this.bottomButtons();
@@ -7,15 +7,15 @@ class UIButtons {
 
 	bottomButtons() {
 		let pos = {
-			x: 330,
-			y: 445,
+			x: bottomPanelSettings.x,
+			y: bottomPanelSettings.y,
 		}
 
 		return ({
-			stats: this.makeButton("skills" ,"stats", pos.x += 30, 445),
-			inventory: this.makeButton("inventory", "inventory", pos.x += 30, 445),
-			armor: this.makeButton("armor" , "armor", pos.x += 30, 445),
-			magic: this.makeButton("magic" , "magic", pos.x += 30, 445),
+			stats: this.makeButton("skills" , "stats", pos.x += bottomPanelSettings.xOffset, pos.y),
+			inventory: this.makeButton("inventory", "inventory", pos.x += bottomPanelSettings.xOffset, pos.y),
+			armor: this.makeButton("armor" , "armor", pos.x += bottomPanelSettings.xOffset, pos.y),
+			magic: this.makeButton("magic" , "magic", pos.x += bottomPanelSettings.xOffset, pos.y),
 		})
 	}
 
@@ -24,7 +24,7 @@ class UIButtons {
 		return ({
 			name: name,
 			img: img,
-			body: new RigidBody({x: x, y: y, width: 32, height: 32})
+			body: new RigidBody({x: x, y: y, width: bottomPanelSettings.width, height: bottomPanelSettings.height})
 		})
 	}
 

@@ -37,7 +37,6 @@ function ClickEvents (socket, gameState) {
   socket.on('keyPress', function(key){
     if (!gameState.players[socket.id]) return false
   	gameState.players[socket.id].KeyPressHandler.log();
-  	console.log("Key: " + key);
   });
 }
 
