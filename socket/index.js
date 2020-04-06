@@ -6,18 +6,17 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var db = require('./DataBase')
 var cors = require('cors');
-
 app.use(cors());
 //io.origins(['http://167.172.222.17:5000']);
 
-
 //Local Package imports
+var Credit = require("./credit");
 const ClickEvents = require('./Game/Events/Inputs');
 const PlayerConnect = require('./Game/Events/PlayerConnect');
 const Update = require('./Game/Logic/Update');
 const Instantiate = require('./Game/Logic/Instantiate');
 
-
+let credits = new Credit()
 //class initialization
 Instantiater = new Instantiate();
 let Updater = new Update();
@@ -28,6 +27,7 @@ const gameState = Instantiater.initialize();
 const payload = {};
 gameState.memoryTaken = 0;
 gameState.memoryCount = 0;
+gameState.credits = credits;
 
 io.on('connection', (socket) => {
   PlayerConnect(socket, gameState);

@@ -24,6 +24,8 @@ export default class Entity {
 
 	draw(canvas, entities) {
 		if (entities.currentPlayer && entities.currentPlayer.navigation.direction === "down") {
+			this.tutorialMaster(canvas, entities.npcs)
+
 			this.currentPlayer(canvas, entities.currentPlayer);
 			this.trees(canvas, entities.trees);
 			this.ores(canvas, entities.ores);
@@ -36,6 +38,7 @@ export default class Entity {
 			this.animals(canvas, entities.animals);
 			this.npcs(canvas, entities.npcs);
 			this.enemies(canvas, entities.enemies);	
+			this.tutorialMaster(canvas, entities.npcs)
 			this.currentPlayer(canvas, entities.currentPlayer);
 		}
 	}
@@ -278,9 +281,19 @@ export default class Entity {
 		this.drawEntity(canvas, animals)
 	}
 
+	tutorialMaster(canvas, npcs) {
+		if (npcs && npcs.tutorialMaster) {
+			if (npcs.tutorialMaster.message) {
+				this.Render.drawBubble(canvas.ctx, npcs.tutorialMaster.body.pos.x - 35, npcs.tutorialMaster.body.pos.y - 75, 200, 75, 20)
+				this.Render.textLinesByLength(npcs.tutorialMaster.message, npcs.tutorialMaster.body.pos.x - 30, npcs.tutorialMaster.body.pos.y - 74, 14, canvas.ctx, "lightGrey")
+			}
+			this.drawEntityBody(canvas, npcs.tutorialMaster);
+		}
+	}
+
 	npcs(canvas, npcs) {
 		if (npcs && npcs.merchant) {
 			this.drawEntityBody(canvas, npcs.merchant);
 		}
 	}
-}
+}	

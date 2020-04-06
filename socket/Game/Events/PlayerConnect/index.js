@@ -28,6 +28,13 @@ function PlayerConnect(socket, gameState) {
 		}
 		delete gameState.players[socket.id]
 	});
+
+	socket.on('getCredits', function() {
+		if (gameState) {
+			gameState.credits.readCredits(socket);
+		}
+		delete gameState.players[socket.id]
+	});
 }
 
 module.exports = PlayerConnect

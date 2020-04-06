@@ -12,7 +12,10 @@ class Update {
 		    if (gameState.players[socket.id]) {
 		      	this.interaction.goToDestination(socket,gameState);
 		      	let player = gameState.players[socket.id].player
-				
+
+				if (!gameState.players[socket.id].tutorial.completed.finished) {
+					gameState.players[socket.id].tutorial.run(player);
+				}
 
 				player.skills.thirst.take(0.001)
 				player.skills.hunger.take(0.0005)

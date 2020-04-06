@@ -12,7 +12,7 @@ const Level = require('../../Objects/Level');
 const Items = require ("../../Objects/Items");
 const Crafting = require("../../Objects/Crafting");
 const {register , createPlayerData, login, loadPlayer, loadLevelItems} = require('../../../DataBase/Controllers/users')
-
+const Tutorial = require("../Tutorial")
 const {
         ClickHandler,
         MouseDownHandler,
@@ -86,7 +86,6 @@ class Instantiate {
 
 		this.clear(socket, gameState);
 		let game = gameState.players[socket.id]
-		// game.level.addInventoryToLevel(gameState.items, game.player.info.currLevel);
 		for (let x = 0; x < RandomInt(3,4); x++) {
 			this.Enemy(socket, gameState, gameState.players[socket.id].player.info.currLevel)
 
@@ -128,6 +127,7 @@ class Instantiate {
 			npcs: {},
 			level : new Level(gameState.items),
 			crafting : new Crafting(gameState.items),
+			tutorial : new Tutorial(gameState.items, false),
 			ClickHandler: new ClickHandler(),
 			MouseDownHandler: new MouseDownHandler(),
 			KeyPressHandler: new KeyPressHandler(),
@@ -138,8 +138,7 @@ class Instantiate {
 		}
 		createPlayerData(gameState.players[socket.id].player)
 		this.Merchant(socket, gameState)
-		// gameState.players[socket.id].level.addInventoryToLevel(gameState.items, 0);
-		// gameState.players[socket.id].level.addInventoryToLevel(gameState.items, 1);
+		this.TutorialMaster(socket, gameState)
 	}
 
 	ExistingPlayer = (socket, gameState, data) => {
@@ -152,6 +151,7 @@ class Instantiate {
 			npcs: {},
 			level : new Level(gameState.items),
 			crafting : new Crafting(gameState.items),
+			tutorial : new Tutorial(gameState.items, true),
 			ClickHandler: new ClickHandler(),
 			MouseDownHandler: new MouseDownHandler(),
 			KeyPressHandler: new KeyPressHandler(),
@@ -162,9 +162,7 @@ class Instantiate {
 		}
 		loadPlayer(gameState.players[socket.id].player, gameState.items);
 		this.Merchant(socket, gameState)
-		
-		// gameState.players[socket.id].level.addInventoryToLevel(gameState.items, 0);
-		// gameState.players[socket.id].level.addInventoryToLevel(gameState.items, 1);
+		this.TutorialMaster(socket, gameState)
 	}
 
 
@@ -225,7 +223,12 @@ class Instantiate {
 		merchant.armor.spaces.helm.set(items.getItem("Armor", "Diamond", "helm"));
 		merchant.armor.spaces.chest.set(items.getItem("Armor", "Diamond", "chest"));
 		merchant.armor.spaces.shield.set(items.getItem("Armor", "Diamond", "shield"));
-		
+
+	}
+
+	TutorialMaster(socket, gameState) {
+		let TutorialMaster = new Entity(this.NPCStructure.tutorialMaster(gameState.items))
+		gameState.players[socket.id].npcs.tutorialMaster = TutorialMaster
 	}
 
 }

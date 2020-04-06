@@ -7,7 +7,7 @@ class Info {
 		this.currLevel = info.currLevel || 0;
 		this.highestLevel = info.highestLevel || 0;
 		this.deaths = info.deaths || 0;
-		this.inventoryPage = "armor";
+		this.inventoryPage = "inventory";
 		this.difficulty = info.difficulty || "Easy";
 		this.sound = info.sound || false
 		

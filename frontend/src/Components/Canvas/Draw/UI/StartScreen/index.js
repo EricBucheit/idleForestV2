@@ -15,7 +15,9 @@ export default class StartScreen {
 		let letters = new Letters();
 		this.start = false;
 		this.screen = 'main';
+		this.credits = "";
 		this.sound = true;
+		this.render = new Render();
 		this.difficulties = {
 			index : 0,
 			options : ['Easy', "Medium", "Hard"],
@@ -31,10 +33,15 @@ export default class StartScreen {
 		this.userMessage = userMessage();
 
 		this.makeBackground();
+		this.makeHalfBackground()
 		this.makeStartScreen()
 		this.makeLogoutScreen();
 		this.makeOptionScreen()
 		this.makeCreditScreen();
+		this.creditsYOffset = 0;
+
+
+
 		this.makeChooseNameScreen(letters.letters);
 		this.makeChoosePasswordScreen(letters.letters)
 		this.makeChoosePlayerScreen()
@@ -113,6 +120,9 @@ export default class StartScreen {
 		}
 
 		if (this.screen === 'credits') {
+			this.renderCredits(canvas.ctx)
+			this.halfBackground.display(canvas.ctx);
+
 			this.creditsBackButton.display(canvas.ctx);
 		}
 
@@ -145,7 +155,10 @@ export default class StartScreen {
 				this.screen = 'name'
 			}
 			if (this.optionsButton.onClick(mouse, canvas)) this.screen = 'options'
-			if (this.creditsButton.onClick(mouse, canvas)) this.screen = 'credits'
+			if (this.creditsButton.onClick(mouse, canvas)) {
+				this.screen = 'credits'
+				socket.emit("getCredits")
+			}
 		} else if (this.screen === 'logout') {
 			if(this.logoutButton.onClick(mouse, canvas)) {
 				socket.emit('logout');
@@ -248,6 +261,24 @@ export default class StartScreen {
 							},
 							text : {
 								x: 70,
+								y: 100,
+								fontsize : 50,
+							},
+						})
+	}
+
+	makeHalfBackground() {
+		this.halfBackground = button({
+							img : background.bankBackGround,
+							info: "A BIG THANK YOU",
+							pos : {
+								x: 0, 
+								y : 0, 
+								width: 480, 
+								height: 220,
+							},
+							text : {
+								x: 20,
 								y: 100,
 								fontsize : 50,
 							},
@@ -412,6 +443,14 @@ export default class StartScreen {
 									fontsize : 30,
 								},
 							})
+		}
+
+		renderCredits(ctx) {
+
+			this.creditsYOffset -= 1;
+			if (this.credits) {
+				this.render.textLinesByLength(this.credits, 20,this.creditsYOffset + 220,15,ctx)
+			}
 		}
 
 		makeChooseNameScreen(letters) {

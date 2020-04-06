@@ -238,6 +238,10 @@ import blackShirtSwing from "./images/Player/partSheets/shirts/Black/swing.png"
 import blackShirtThrust from "./images/Player/partSheets/shirts/Black/thrust.png"
 import blackShirtWalk from "./images/Player/partSheets/shirts/Black/walk.png"
 
+
+import blackHood from './images/Player/fullSheet/clothes02/male_hood_black.png'
+import blackTabard from './images/Player/fullSheet/clothes02/male_tabard_black.png'
+
 //pants
 
 import blackPantsHurt from "./images/Player/partSheets/pants/Black/hurt.png"
@@ -551,6 +555,10 @@ let playerShirts = {
 				})
 						
 	},
+
+	blackTabard : {
+		images : fullSheetImage(blackTabard)
+	}
 }
 
 let playerPants = {
@@ -672,6 +680,9 @@ let playerHair = {
 	},
 	darkRed: {
 		images : fullSheetImage(darkRedMessyHair)
+	},
+	blackHood: {
+		images : fullSheetImage(blackHood)
 	}
 }
 

@@ -18,13 +18,48 @@ export default class Render {
 		if (str.toString().length > 6 && parseInt(size) >= 10) {
 			x -= 6
 		}
-
 		ctx.strokeStyle = color
 		ctx.font = size+"px Comic Sans MS";
-		
 		ctx.strokeText(str, x, y);
 		
     }
+
+    textLinesByLength(str, x, y, size, ctx, color= "white") {
+    	str = str.split("\n");
+    	ctx.strokeStyle = color
+		ctx.font = size+"px Comic Sans MS";
+		let y_offset = 0;
+		for (let word in str) {
+			y_offset += 15;		
+			ctx.strokeText(str[word], x, y + (y_offset));
+		}
+    }
+    drawBubble(ctx, x, y, w, h, radius)
+	{
+	  var r = x + w;
+	  var b = y + h;
+	  ctx.beginPath();
+
+	  ctx.fillStyle="black";
+	  ctx.lineWidth="2";
+	  ctx.globalAlpha = 0.5
+	  ctx.moveTo(x+radius, y);
+	  ctx.lineTo(x+radius/2, y-10);
+	  ctx.lineTo(x+radius * 2, y);
+	  ctx.lineTo(r-radius, y);
+	  ctx.quadraticCurveTo(r, y, r, y+radius);
+	  ctx.lineTo(r, y+h-radius);
+	  ctx.quadraticCurveTo(r, b, r-radius, b);
+	  ctx.lineTo(x+radius, b);
+	  ctx.quadraticCurveTo(x, b, x, b-radius);
+	  ctx.lineTo(x, y+radius);
+	  ctx.quadraticCurveTo(x, y, x+radius, y);
+
+	  ctx.fill();
+	  ctx.globalAlpha = 1
+
+
+	}
 
     img(img, x,y, width, height, ctx) {
 	    ctx.drawImage(img.img, 

@@ -41,11 +41,17 @@ class Interaction {
 				saveLevelItems(player, currLevel, gameState.players[socket.id].level);
 				player.info.currLevel--;
 				player.body.setPos(gameState.players[socket.id].level.nextLevel.body.pos.x, gameState.players[socket.id].level.nextLevel.body.pos.y)
+				if (!gameState.players[socket.id].tutorial.completed.finished) {
+					gameState.players[socket.id].npcs.tutorialMaster.body.setPos(gameState.players[socket.id].level.nextLevel.body.pos.x, gameState.players[socket.id].level.nextLevel.body.pos.y)
+				}
 				this.instantiation.levelLogic(socket, gameState)
 			} else if (target.destination === "nextLevel") {
 				saveLevelItems(player, currLevel, gameState.players[socket.id].level);
 				player.info.currLevel++
 				player.body.setPos(gameState.players[socket.id].level.prevLevel.body.pos.x, gameState.players[socket.id].level.prevLevel.body.pos.y)
+				if (!gameState.players[socket.id].tutorial.completed.finished) {
+					gameState.players[socket.id].npcs.tutorialMaster.body.setPos(gameState.players[socket.id].level.prevLevel.body.pos.x, gameState.players[socket.id].level.prevLevel.body.pos.y)
+				}
 				this.instantiation.levelLogic(socket, gameState)
 
 
@@ -77,7 +83,6 @@ class Interaction {
 		if(entities) {
 			for (let index in entities) {
 				let entity = entities[index]
-
 				entity.animation.indices.walk.timer()
 				let movement = entity.body.moveTo(entity.body.path.coordinates[entity.body.path.index])
 				entity.navigation.direction = movement.direction;
@@ -94,12 +99,37 @@ class Interaction {
 		}
 	}
 
+	tutorial(socket, gameState) {
+		let player = gameState.players[socket.id].player
+
+		let level = gameState.players[socket.id].level
+		if (!gameState.players[socket.id].tutorial.completed.finished) {
+			gameState.players[socket.id].npcs.tutorialMaster.action.current = "walk"
+			let movement = false
+			if (player.info.currLevel > 1) {
+				movement = gameState.players[socket.id].npcs.tutorialMaster.body.moveTo(level.centerLeftLevel)
+			} else {
+				if (player.info.menu.current !== "none") {
+					movement = gameState.players[socket.id].npcs.tutorialMaster.body.moveTo(level.centerLeftLevel)
+				} else {
+					movement = gameState.players[socket.id].npcs.tutorialMaster.body.moveTo(player)
+
+				}
+			}
+			gameState.players[socket.id].npcs.tutorialMaster.navigation.direction = movement.direction;
+			gameState.players[socket.id].npcs.tutorialMaster.animation.indices.walk.timer();
+			gameState.players[socket.id].npcs.tutorialMaster.action.current = "walk"
+
+		}
+	}
+
 	goToDestination(socket, gameState) {
 		let player = gameState.players[socket.id].player
 		let target = player.action.currentTarget(socket, gameState);
+		let level = gameState.players[socket.id].level
+		this.tutorial(socket, gameState)
 
 		player.action.task = "none";
-		let level = gameState.players[socket.id].level
 
 		let deathCheck = this.fight.playerDeath(player, level)
 		if (deathCheck.dead) {

@@ -44,10 +44,21 @@ class Level {
 			velocityY : 0,
 		}
 
+		let centerLeftSettings = {
+			x : 32,
+			y : 32 * 7,
+			width : 32,
+			height : 32,
+			velocityX : 0,
+			velocityY : 0,
+		}
+
 		this.body = new RigidBody(mapSettings);		
 		this.prevLevel = {body: new RigidBody(prevLevelSettings)};
 		this.nextLevel = {body: new RigidBody(nextLevelSettings)};
 		this.centerLevel = {body:  new RigidBody(centerLevelSettings)};
+		this.centerLeftLevel = {body:  new RigidBody(centerLeftSettings)};
+
 	}
 
 	addInventoryToLevel(items, currLevel) {

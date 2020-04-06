@@ -150,9 +150,36 @@ class UIPackage {
 			}
 		}
 
+		let tutorialMasterPackage = false
+		if (!user.tutorial.completed.finished) {
+			let tutorialMaster = gameState.players[socket.id].npcs.tutorialMaster
+			tutorialMasterPackage =  {
+				body: tutorialMaster.body,
+				navigation: {
+					direction: tutorialMaster.navigation.direction,
+				},
+				action : tutorialMaster.action.current,
+				animation: {
+					img: tutorialMaster.animation.img,
+					hair: tutorialMaster.animation.hair,
+					shirt: tutorialMaster.animation.shirt,
+					pants: tutorialMaster.animation.pants,
+					helm : tutorialMaster.armor.spaces.helm.animationInfo(),
+					chest: tutorialMaster.armor.spaces.chest.animationInfo(),
+					shield: tutorialMaster.armor.spaces.shield.animationInfo(),
+					legs : false,
+					feet : false,
+					index: tutorialMaster.animation.indices[player.action.current].index,
+				},
+				message: user.tutorial.message,
+			}
+		}
+
+
 
 		let npcPackage = {
 			merchant : merchantPackage,
+			tutorialMaster : tutorialMasterPackage,
 		}
 
 		let levelPackage = {

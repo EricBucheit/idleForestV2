@@ -60,6 +60,9 @@ export default class Canvas extends React.Component {
         socket.on("logout", data => {
             this.StartScreen.logoutEvent(data)
         })
+        socket.on("getCredits", data => {
+            this.StartScreen.credits = data
+        })
 
         this.updateCanvas();
     }
