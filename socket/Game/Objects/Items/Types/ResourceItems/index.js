@@ -2,7 +2,7 @@ const ItemTemplate = require("../../Template");
 
 const {plants} = require("../ConsumeableItems/food")
 
-let harvestQuantity = 10;
+let harvestQuantity = 2;
 let barCreationQuantity = 5;
 
 let Ore = {

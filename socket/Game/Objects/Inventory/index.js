@@ -110,7 +110,7 @@ class Inventory {
     farm(player, index) {
       if (this.checkQuantity(index) > 4) {
         if (player.home.farm.plant(this.item(index))) {
-          this.delete(index, 5);
+          this.delete(index, 1);
           return true
         }
 
