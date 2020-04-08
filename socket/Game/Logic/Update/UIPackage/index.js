@@ -119,6 +119,7 @@ class UIPackage {
 			magicUI : player.magic.inventoryUI,
 			info : {
 				currentLevel: player.info.currLevel,
+				highestLevel: player.info.highestLevel,
 				gold: player.inventory.gold,
 				inventoryPage: player.info.inventoryPage,
 				menu: player.info.menu.current,

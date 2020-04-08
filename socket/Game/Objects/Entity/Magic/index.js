@@ -267,6 +267,9 @@ class Magic {
 				if (level === 1) {
 					player.action.buttons.home.start();
 				}
+				if (level > 1) {
+					player.action.buttons.home.stop();
+				}
 
 				let find = player.inventory.find(this.stone)
 
