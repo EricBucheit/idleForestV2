@@ -161,6 +161,7 @@ class Instantiate {
 			MoveHandler: new MoveHandler(),
 		}
 		loadPlayer(gameState.players[socket.id].player, gameState.items);
+		gameState.players[socket.id].player.armor.addBonus();
 		this.Merchant(socket, gameState)
 		this.TutorialMaster(socket, gameState)
 	}

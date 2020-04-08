@@ -133,7 +133,7 @@ class Armor {
 		if (item.id === this.spaces.arrows.item.id) {
 			this.spaces.arrows.item.quantity += inventoryItem.item.quantity;
 			inventory.delete(inventoryItem.index, inventoryItem.quantity);
-
+			this.addBonus()
 			return ({code: 1, message: `Quantity: ${inventoryItem.quantity} was added to ${this.spaces.arrows.item.name}`})
 		}
 
@@ -142,6 +142,7 @@ class Armor {
 			if (this.remove("arrows", inventory)) {
 				this.spaces.arrows.item = inventoryItem.item;
 				inventory.delete(inventoryItem.index, inventoryItem.item.quantity);
+				this.addBonus()
 				return ({code: 1, message: `${tmp.name} Exchanged for ${item.name}`})
 			} else {
 				return ({code: -1, message: "No Space in Inventory"})
@@ -149,7 +150,7 @@ class Armor {
 		} else {
 			this.spaces.arrows.item = inventoryItem.item;
 			inventory.delete(inventoryItem.index, inventoryItem.quantity);
-
+			this.addBonus();
 			return ({code: 1, message: `Added ${item.name}, Quantity: ${item.quantity}`})
 		}
 	}

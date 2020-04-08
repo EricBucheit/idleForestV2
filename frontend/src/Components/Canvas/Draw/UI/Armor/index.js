@@ -18,6 +18,21 @@ export default class Armor {
 		}
 	}
 
+	draw(canvas, player) {
+		this.inventoryBackground(canvas)
+		this.borders(canvas)
+		this.items(canvas, player)
+		this.armorStats(canvas, player)
+	}
+
+	armorStats(canvas, player) {
+		this.render.textLine(`Attack: ${player.armorBonus.attack}`, 		380, 380, 10, canvas.ctx)
+		this.render.textLine(`Defense: ${player.armorBonus.defense}`, 		380, 395, 10, canvas.ctx)
+		this.render.textLine(`Range: ${player.armorBonus.range}`, 			380, 410, 10, canvas.ctx)
+		this.render.textLine(`Mining: ${player.armorBonus.mining}`, 		380, 425, 10, canvas.ctx)
+		this.render.textLine(`WoodCut: ${player.armorBonus.woodcutting}`, 	380, 440, 10, canvas.ctx)
+	}
+
 	armorPiece(x,y, render) {
 		return({
 			render: render,
@@ -43,11 +58,7 @@ export default class Armor {
 		})
 	}
 
-	draw(canvas, player) {
-		this.inventoryBackground(canvas)
-		this.borders(canvas)
-		this.items(canvas, player)
-	}
+	
 
 	items(canvas, player) {
 		if(!player) return false

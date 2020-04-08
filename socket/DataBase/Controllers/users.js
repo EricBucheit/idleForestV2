@@ -316,6 +316,7 @@ function loadArmor(player, items) {
 			let foundItem = items.getItem(armor.category_name, armor.subCategory_name, armor.item_name)
 			player.armor.spaces[armor.name].set(foundItem);
 			player.armor.spaces[armor.name].item.quantity = armor.quantity;
+			player.armor.addBonus();
 		}
 	}).catch(err => {
 		console.log(err)

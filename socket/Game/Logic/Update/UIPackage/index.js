@@ -111,6 +111,7 @@ class UIPackage {
 			menu : menu,
 			farm : farm,
 			skills: player.skills,
+			armorBonus: player.armor.bonus,
 			inventory: player.inventory.package(),
 			sortItem : user.MouseDownHandler.sortItems.package(),
 			dblClickMenu : user.RightClickHandler.dblClickMenu.package(),
