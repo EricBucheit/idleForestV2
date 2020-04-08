@@ -1,25 +1,13 @@
 const {Timer, RigidBody} = require('../../../../Helpers')
-
+const {waterSourceSettings} = require('../../../../../GlobalSettings')
 class WaterSource {
 	constructor(items, settings) {
 		this.water = items.getSubcategory("Consumeable", "Water");
 		this.level = settings.level || 0;
-		this.prices = [1000, 10000, 100000, 1000000, 5000000, 20000000];
-		this.timer = new Timer(1000);
-		this.body = new RigidBody({
-			x: 240 - 13,
-			y: 80 - 15,
-			width: 90,
-			height: 75,
-		})
-
-		this.upgradeButton = {body: new RigidBody({
-				x: 247,
-				y: 36,
-				width: 50,
-				height: 25
-			})
-		}
+		this.prices = waterSourceSettings.prices;
+		this.timer = new Timer(waterSourceSettings.timer);
+		this.body = new RigidBody(waterSourceSettings.body);
+		this.upgradeButton = {body: new RigidBody(waterSourceSettings.upgradeButtonBody)};
 	}
 
 	upgradePrice() {

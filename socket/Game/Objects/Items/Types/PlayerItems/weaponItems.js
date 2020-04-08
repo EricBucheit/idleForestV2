@@ -1,78 +1,79 @@
 const ItemTemplate = require('../../Template')
 
 const {Bar, Wood} = require("../ResourceItems")
+const {weaponSettings} = require('../../../../../GlobalSettings/itemSettings');
 
 let BronzeWeapons = {
 
 	mace: new ItemTemplate({
 		name : "Mace (B)", 
-		price : 10000, 
-		bonus : 8,
-		speed : 150,
+		price : weaponSettings.bronze.mace.price, 
+		bonus : weaponSettings.bronze.mace.bonus,
+		speed : weaponSettings.bronze.mace.speed,
 		img: "bronzeMace",
 		category: "weapon",
-		craftTime: 60000,
+		craftTime: weaponSettings.bronze.mace.craftTime,
 		use : function(player) {
 			player.armor.add("weapon", this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.bronze, quantity: 10}, 
-			{item: Wood.oak, quantity: 500}
+			{item: Bar.bronze, quantity: weaponSettings.bronze.mace.barCraftQuantity}, 
+			{item: Wood.oak, quantity: weaponSettings.bronze.mace.woodCraftQuantity}
 		]
 	}),
 
 	sword: new ItemTemplate({
 		name : "Sword (B)", 
-		price : 30000, 
-		bonus : 12,
-		speed : 125,
+		price : weaponSettings.bronze.sword.price, 
+		bonus : weaponSettings.bronze.sword.bonus,
+		speed : weaponSettings.bronze.sword.speed,
 		img: "bronzeSword",
 		category: "weapon",
-		craftTime: 60000,
+		craftTime: weaponSettings.bronze.sword.craftTime,
 		use : function(player) {
 			player.armor.add("weapon", this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.bronze, quantity: 20}, 
-			{item: Wood.oak, quantity: 700}
+			{item: Bar.bronze, quantity: weaponSettings.bronze.sword.barCraftQuantity}, 
+			{item: Wood.oak, quantity: weaponSettings.bronze.sword.woodCraftQuantity}
 		]
 	}),
 
 	axe: new ItemTemplate({
 		name : "Axe (B)", 
-		price : 50, 
-		bonus : 2,
-		speed : 150,
+		price : weaponSettings.bronze.axe.price, 
+		bonus : weaponSettings.bronze.axe.bonus,
+		speed : weaponSettings.bronze.axe.speed,
 		img: "bronzeAxe",
 		category: "tools",
-		craftTime: 30000,
+		craftTime: weaponSettings.bronze.axe.craftTime,
 		use : function(player) {
 			player.armor.add("axe", this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.bronze, quantity: 2}, 
-			{item: Wood.oak, quantity: 20}
+			{item: Bar.bronze, quantity: weaponSettings.bronze.axe.barCraftQuantity}, 
+			{item: Wood.oak, quantity: weaponSettings.bronze.axe.woodCraftQuantity}
 		]
 	}),
 
 	pickaxe: new ItemTemplate({
 		name : "pickaxe (B)", 
-		price : 50, 
-		bonus : 2,
-		speed : 150,
+		price : weaponSettings.bronze.pickaxe.price, 
+		bonus : weaponSettings.bronze.pickaxe.bonus,
+		speed : weaponSettings.bronze.pickaxe.speed,
 		img: "bronzePickaxe",
 		category: "tools",
-		craftTime: 30000,
+		craftTime: weaponSettings.bronze.pickaxe.craftTime,
 		use : function(player) {
 			player.armor.add("pickaxe", this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.bronze, quantity: 2}, 
-			{item: Wood.oak, quantity: 20}
+			{item: Bar.bronze, quantity: weaponSettings.bronze.pickaxe.barCraftQuantity}, 
+			{item: Wood.oak, quantity: weaponSettings.bronze.pickaxe.woodCraftQuantity}
 		]
 	}),
 }
@@ -80,73 +81,73 @@ let BronzeWeapons = {
 let IronWeapons = {
 	mace: new ItemTemplate({
 		name : "Iron Mace", 
-		price : 100000, 
-		bonus : 20,
-		speed : 140,
+		price : weaponSettings.iron.mace.price, 
+		bonus : weaponSettings.iron.mace.bonus,
+		speed : weaponSettings.iron.mace.speed,
 		img: "ironMace",
 		category: "weapon",
-		craftTime: 120000,
+		craftTime: weaponSettings.iron.mace.craftTime,
 		use : function(player) {
 			player.armor.add("weapon", this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.iron, quantity: 10}, 
-			{item: Wood.maple, quantity: 500}
+			{item: Bar.iron, quantity: weaponSettings.iron.mace.barCraftQuantity}, 
+			{item: Wood.maple, quantity: weaponSettings.iron.mace.woodCraftQuantity}
 		]
 	}),
 
 	sword: new ItemTemplate({
 		name : "Iron Sword", 
-		price : 115000, 
-		bonus : 26,
-		speed : 115,
+		price : weaponSettings.iron.sword.price, 
+		bonus : weaponSettings.iron.sword.bonus,
+		speed : weaponSettings.iron.sword.speed,
 		img: "ironSword",
 		category: "weapon",
-		craftTime: 120000,
+		craftTime: weaponSettings.iron.sword.craftTime,
 		use : function(player) {
 			player.armor.add("weapon", this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.iron, quantity: 20}, 
-			{item: Wood.maple, quantity: 700}
+			{item: Bar.iron, quantity: weaponSettings.iron.sword.barCraftQuantity}, 
+			{item: Wood.maple, quantity: weaponSettings.iron.sword.woodCraftQuantity}
 		]
 	}),
 
 	axe: new ItemTemplate({
 		name : "Iron Axe", 
-		price : 500, 
-		bonus : 10,
-		speed : 140,
+		price : weaponSettings.iron.axe.price, 
+		bonus : weaponSettings.iron.axe.bonus,
+		speed : weaponSettings.iron.axe.speed,
 		img: "ironAxe",
 		category: "tools",
-		craftTime: 60000,
+		craftTime: weaponSettings.iron.axe.craftTime,
 		use : function(player) {
 			player.armor.add("axe", this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.iron, quantity: 2},
-			{item: Wood.maple, quantity: 20}
+			{item: Bar.iron, quantity: weaponSettings.iron.axe.barCraftQuantity},
+			{item: Wood.maple, quantity: weaponSettings.iron.axe.woodCraftQuantity}
 		]
 	}),
 
 	pickaxe : new ItemTemplate({
 		name : "Iron Pic", 
-		price : 500, 
-		bonus : 10,
-		speed : 140,
+		price : weaponSettings.iron.pickaxe.price, 
+		bonus : weaponSettings.iron.pickaxe.bonus,
+		speed : weaponSettings.iron.pickaxe.speed,
 		img: "ironPickaxe",
 		category: "tools",
-		craftTime: 60000,
+		craftTime: weaponSettings.iron.pickaxe.craftTime,
 		use : function(player) {
 			player.armor.add("pickaxe", this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.iron, quantity: 2},
-			{item: Wood.maple, quantity: 20}
+			{item: Bar.iron, quantity: weaponSettings.iron.pickaxe.barCraftQuantity},
+			{item: Wood.maple, quantity: weaponSettings.iron.pickaxe.woodCraftQuantity}
 		]
 	}),
 
@@ -157,73 +158,73 @@ let GoldWeapons = {
 	
 	mace: new ItemTemplate({
 		name : "Gold Mace", 
-		price : 300000, 
-		bonus : 40,
-		speed : 130,
+		price : weaponSettings.gold.mace.price, 
+		bonus : weaponSettings.gold.mace.bonus,
+		speed : weaponSettings.gold.mace.speed,
 		img: "goldMace",
 		category: "weapon",
-		craftTime: 180000,
+		craftTime: weaponSettings.gold.mace.craftTime,
 		use : function(player) {
 			player.armor.add("weapon", this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.gold, quantity: 10}, 
-			{item: Wood.mahogony, quantity: 500}
+			{item: Bar.gold, quantity: weaponSettings.gold.mace.barCraftQuantity}, 
+			{item: Wood.mahogony, quantity: weaponSettings.gold.mace.woodCraftQuantity}
 		]
 	}),
 
 	sword: new ItemTemplate({
 		name : "Gold Sword", 
-		price : 350000, 
-		bonus : 50,
-		speed : 105,
+		price : weaponSettings.gold.sword.price, 
+		bonus : weaponSettings.gold.sword.bonus,
+		speed : weaponSettings.gold.sword.speed,
 		img: "goldSword",
 		category: "weapon",
-		craftTime: 180000,
+		craftTime: weaponSettings.gold.sword.craftTime,
 		use : function(player) {
 			player.armor.add("weapon", this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.gold, quantity: 20}, 
-			{item: Wood.mahogony, quantity: 700}
+			{item: Bar.gold, quantity: weaponSettings.gold.sword.barCraftQuantity}, 
+			{item: Wood.mahogony, quantity: weaponSettings.gold.sword.woodCraftQuantity}
 		]
 	}),
 
 	axe: new ItemTemplate({
 		name : "Gold Axe", 
-		price : 20000, 
-		bonus : 20,
-		speed : 130,
+		price : weaponSettings.gold.axe.price,
+		bonus : weaponSettings.gold.axe.bonus,
+		speed : weaponSettings.gold.axe.speed,
 		img: "goldAxe",
 		category: "tools",
-		craftTime: 90000,
+		craftTime: weaponSettings.gold.axe.craftTime,
 		use : function(player) {
 			player.armor.add("axe", this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.gold, quantity: 2},
-			{item: Wood.mahogony, quantity: 20}
+			{item: Bar.gold, quantity: weaponSettings.gold.axe.barCraftQuantity},
+			{item: Wood.mahogony, quantity: weaponSettings.gold.axe.woodCraftQuantity}
 		]
 	}),
 	
 	pickaxe: new ItemTemplate({
 		name : "Gold Pic", 
-		price : 20000, 
-		bonus : 20,
-		speed : 130,
+		price : weaponSettings.gold.pickaxe.price,
+		bonus : weaponSettings.gold.pickaxe.bonus,
+		speed : weaponSettings.gold.pickaxe.speed,
 		img: "goldPickaxe",
 		category: "tools",
-		craftTime: 90000,
+		craftTime: weaponSettings.gold.pickaxe.craftTime,
 		use : function(player) {
 			player.armor.add("pickaxe", this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.gold, quantity: 2},
-			{item: Wood.mahogony, quantity: 20}
+			{item: Bar.gold, quantity: weaponSettings.gold.pickaxe.barCraftQuantity},
+			{item: Wood.mahogony, quantity: weaponSettings.gold.pickaxe.woodCraftQuantity}
 		]
 	}),
 }
@@ -233,73 +234,73 @@ let PlatinumWeapons = {
 	
 	mace: new ItemTemplate({
 		name : "Platinum Mace", 
-		price : 800000, 
-		bonus : 70,
-		speed : 120,
+		price : weaponSettings.platinum.mace.price,
+		bonus : weaponSettings.platinum.mace.bonus,
+		speed : weaponSettings.platinum.mace.speed,
 		img: "platinumMace",
 		category: "weapon",
-		craftTime: 240000,
+		craftTime: weaponSettings.platinum.mace.craftTime,
 		use : function(player) {
 			player.armor.add("weapon", this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.platinum, quantity: 20}, 
-			{item: Wood.magic, quantity: 500}
+			{item: Bar.platinum, quantity: weaponSettings.platinum.mace.barCraftQuantity}, 
+			{item: Wood.magic, quantity: weaponSettings.platinum.mace.woodCraftQuantity}
 		]
 	}),
 
 	sword: new ItemTemplate({
 		name : "Platinum Sword", 
-		price : 900000, 
-		bonus : 85,
-		speed : 95,
+		price : weaponSettings.platinum.sword.price, 
+		bonus : weaponSettings.platinum.sword.bonus,
+		speed : weaponSettings.platinum.sword.speed,
 		img: "platinumSword",
 		category: "weapon",
-		craftTime: 240000,
+		craftTime: weaponSettings.platinum.sword.craftTime,
 		use : function(player) {
 			player.armor.add("weapon", this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.platinum, quantity: 30}, 
-			{item: Wood.magic, quantity: 700}
+			{item: Bar.platinum, quantity: weaponSettings.platinum.sword.barCraftQuantity}, 
+			{item: Wood.magic, quantity: weaponSettings.platinum.sword.woodCraftQuantity}
 		]
 	}),
 
 	axe: new ItemTemplate({
 		name : "Platinum Axe", 
-		price : 50000, 
-		bonus : 40,
-		speed : 120,
+		price : weaponSettings.platinum.axe.price, 
+		bonus : weaponSettings.platinum.axe.bonus,
+		speed : weaponSettings.platinum.axe.speed,
 		img: "platinumAxe",
 		category: "tools",
-		craftTime: 120000,
+		craftTime: weaponSettings.platinum.axe.craftTime,
 		use : function(player) {
 			player.armor.add("axe", this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.platinum, quantity: 2}, 
-			{item: Wood.magic, quantity: 20}
+			{item: Bar.platinum, quantity: weaponSettings.platinum.axe.barCraftQuantity}, 
+			{item: Wood.magic, quantity: weaponSettings.platinum.axe.woodCraftQuantity}
 		]
 	}),
 
 	pickaxe: new ItemTemplate({
 		name : "Platinum Pic", 
-		price : 50000, 
-		bonus : 40,
-		speed : 120,
+		price : weaponSettings.platinum.pickaxe.price, 
+		bonus : weaponSettings.platinum.pickaxe.bonus,
+		speed : weaponSettings.platinum.pickaxe.speed,
 		img: "platinumPickaxe",
 		category: "tools",
-		craftTime: 120000,
+		craftTime: weaponSettings.platinum.pickaxe.craftTime,
 		use : function(player) {
 			player.armor.add("pickaxe", this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.platinum, quantity: 2}, 
-			{item: Wood.magic, quantity: 20}
+			{item: Bar.platinum, quantity: weaponSettings.platinum.pickaxe.barCraftQuantity}, 
+			{item: Wood.magic, quantity: weaponSettings.platinum.pickaxe.woodCraftQuantity}
 		]
 	}),
 }
@@ -307,73 +308,73 @@ let PlatinumWeapons = {
 let DiamondWeapons = {
 	mace: new ItemTemplate({
 		name : "Diamond Mace", 
-		price : 2000000, 
-		bonus : 115,
-		speed : 110,
+		price : weaponSettings.diamond.mace.price,
+		bonus : weaponSettings.diamond.mace.bonus,
+		speed : weaponSettings.diamond.mace.speed,
 		img: "diamondMace",
 		category: "weapon",
-		craftTime: 300000,
+		craftTime: weaponSettings.diamond.mace.craftTime,
 		use : function(player) {
 			player.armor.add("weapon", this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.diamond, quantity: 50}, 
-			{item: Wood.super, quantity: 500}
+			{item: Bar.diamond, quantity: weaponSettings.diamond.mace.barCraftQuantity}, 
+			{item: Wood.super, quantity: weaponSettings.diamond.mace.woodCraftQuantity}
 		]
 	}),
 
 	sword: new ItemTemplate({
 		name : "Diamond Sword", 
-		price : 2500000, 
-		bonus : 140,
-		speed : 85,
+		price : weaponSettings.diamond.sword.price,
+		bonus : weaponSettings.diamond.sword.bonus,
+		speed : weaponSettings.diamond.sword.speed,
 		img: "diamondSword",
 		category: "weapon",
-		craftTime: 300000,
+		craftTime: weaponSettings.diamond.sword.craftTime,
 		use : function(player) {
 			player.armor.add("weapon", this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.diamond, quantity: 75}, 
-			{item: Wood.super, quantity: 700}
+			{item: Bar.diamond, quantity: weaponSettings.diamond.sword.barCraftQuantity}, 
+			{item: Wood.super, quantity: weaponSettings.diamond.sword.woodCraftQuantity}
 		]
 	}),
 
 	axe: new ItemTemplate({
 		name : "Diamond Axe", 
-		price : 100000, 
-		bonus : 70,
-		speed : 110,
+		price : weaponSettings.diamond.axe.price,
+		bonus : weaponSettings.diamond.axe.bonus,
+		speed : weaponSettings.diamond.axe.speed,
 		img : "diamondAxe",
 		category: "tools",
-		craftTime: 240000,
+		craftTime: weaponSettings.diamond.axe.craftTime,
 		use : function(player) {
 			player.armor.add("axe", this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.diamond, quantity: 2}, 
-			{item: Wood.super, quantity: 20}
+			{item: Bar.diamond, quantity: weaponSettings.diamond.axe.barCraftQuantity}, 
+			{item: Wood.super, quantity: weaponSettings.diamond.axe.woodCraftQuantity}
 		]
 	}),
 
 	pickaxe: new ItemTemplate({
 		name : "Diamond Pic", 
-		price : 100000, 
-		bonus : 70,
-		speed : 110,
+		price : weaponSettings.diamond.pickaxe.price, 
+		bonus : weaponSettings.diamond.pickaxe.bonus,
+		speed : weaponSettings.diamond.pickaxe.speed,
 		img: "diamondPickaxe",
 		category: "tools",
-		craftTime: 240000,
+		craftTime: weaponSettings.diamond.pickaxe.craftTime,
 		use : function(player) {
 			player.armor.add("pickaxe", this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.diamond, quantity: 2}, 
-			{item: Wood.super, quantity: 20}
+			{item: Bar.diamond, quantity: weaponSettings.diamond.pickaxe.barCraftQuantity}, 
+			{item: Wood.super, quantity: weaponSettings.diamond.pickaxe.woodCraftQuantity}
 		]
 	}),
 }
@@ -382,166 +383,166 @@ let rangeWeapons = {
 	
 	oak: new ItemTemplate({
 		name : "Oak Bow", 
-		price : 10000, 
-		bonus : 20,
-		speed : 120,
+		price : weaponSettings.bow.oak.price,
+		bonus : weaponSettings.bow.oak.bonus,
+		speed : weaponSettings.bow.oak.speed,
 		img: "oakBow",
 		category: "range",
-		craftTime : 10000,
+		craftTime : weaponSettings.bow.oak.craftTime,
 		use : function(player) {
 			player.armor.add("bow", this, player.inventory);
 			return({used: false})
 		}, 
-		recipe: [{item: Wood.oak, quantity: 500}]
+		recipe: [{item: Wood.oak, quantity: weaponSettings.bow.oak.woodCraftQuantity}]
 	}),
 
 	maple: new ItemTemplate({
 		name : "Maple Bow", 
-		price : 100000, 
-		bonus : 42,
-		speed : 110,
+		price : weaponSettings.bow.maple.price,
+		bonus : weaponSettings.bow.maple.bonus,
+		speed : weaponSettings.bow.maple.speed,
 		img: "mapleBow",
 		category: "range",
-		craftTime : 20000,
+		craftTime : weaponSettings.bow.maple.craftTime,
 
 		use : function(player) {
 			player.armor.add("bow", this, player.inventory);
 			return({used: false})
 		}, 
-		recipe: [{item: Wood.maple, quantity: 500}]
+		recipe: [{item: Wood.maple, quantity: weaponSettings.bow.maple.woodCraftQuantity}]
 	}),
 
 	mahogony: new ItemTemplate({
 		name : "Mahogony Bow", 
-		price : 500000, 
-		bonus : 65,
-		speed : 100,
+		price : weaponSettings.bow.mahogony.price,
+		bonus : weaponSettings.bow.mahogony.bonus,
+		speed : weaponSettings.bow.mahogony.speed,
 		img: "mahogonyBow",
 		category: "range",
-		craftTime : 30000,
+		craftTime : weaponSettings.bow.mahogony.craftTime,
 
 		use : function(player) {
 			player.armor.add("bow", this, player.inventory);
 			return({used: false})
 		}, 
-		recipe: [{item: Wood.mahogony, quantity: 500}]
+		recipe: [{item: Wood.mahogony, quantity: weaponSettings.bow.mahogony.woodCraftQuantity}]
 	}),
 
 	magic: new ItemTemplate({
 		name : "Magic Bow", 
-		price : 1000000, 
-		bonus : 88,
-		speed : 90,
+		price : weaponSettings.bow.magic.price,
+		bonus : weaponSettings.bow.magic.bonus,
+		speed : weaponSettings.bow.magic.speed,
 		img: "magicBow",
 		category: "range",
-		craftTime : 40000,
+		craftTime : weaponSettings.bow.magic.craftTime,
 		use : function(player) {
 			player.armor.add("bow", this, player.inventory);
 			return({used: false})
 		}, 
-		recipe: [{item: Wood.magic, quantity: 500}]
+		recipe: [{item: Wood.magic, quantity: weaponSettings.bow.magic.woodCraftQuantity}]
 	}),
 
 	super: new ItemTemplate({
 		name : "Super Bow", 
-		price : 10000000, 
-		bonus : 123,
-		speed : 80,
+		price : weaponSettings.bow.super.price,
+		bonus : weaponSettings.bow.super.bonus,
+		speed : weaponSettings.bow.super.speed,
 		img: "superBow",
 		category: "range",
-		craftTime : 50000,
+		craftTime : weaponSettings.bow.super.craftTime,
 
 		use : function(player) {
 			player.armor.add("bow", this, player.inventory);
 			return({used: false})
 		}, 
-		recipe: [{item: Wood.super, quantity: 500}]
+		recipe: [{item: Wood.super, quantity: weaponSettings.bow.super.woodCraftQuantity}]
 	}),
 }
 
 let arrows = {
 	bronze: new ItemTemplate({
 		name : "Bronze Arrow", 
-		price : 200, 
-		bonus : 22,
+		price : weaponSettings.arrows.bronze.price,
+		bonus : weaponSettings.arrows.bronze.bonus,
 		img: "bronzeArrow",
 		category: "range",
-		craftTime: 5000,
+		craftTime: weaponSettings.arrows.bronze.craftTime,
 		use : function(player) {
 			player.armor.addArrows(this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.bronze, quantity: 1}, 
-			{item: Wood.oak, quantity: 1}
+			{item: Bar.bronze, quantity: weaponSettings.arrows.bronze.barCraftQuantity}, 
+			{item: Wood.oak, quantity: weaponSettings.arrows.bronze.woodCraftQuantity}
 		]
 	}),
 
 	iron: new ItemTemplate({
 		name : "Iron Arrow", 
-		price : 500, 
-		bonus : 32,
+		price : weaponSettings.arrows.iron.price,
+		bonus : weaponSettings.arrows.iron.bonus,
 		img: "ironArrow",
 		category: "range",
-		craftTime: 6000,
+		craftTime: weaponSettings.arrows.iron.craftTime,
 		use : function(player) {
 			player.armor.addArrows(this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.iron, quantity: 1}, 
-			{item: Wood.maple, quantity: 1}
+			{item: Bar.iron, quantity: weaponSettings.arrows.iron.barCraftQuantity}, 
+			{item: Wood.maple, quantity: weaponSettings.arrows.iron.woodCraftQuantity}
 		]
 	}),
 
 	gold: new ItemTemplate({
 		name : "Gold Arrow", 
-		price : 2000, 
-		bonus : 44,
+		price : weaponSettings.arrows.gold.price, 
+		bonus : weaponSettings.arrows.gold.bonus,
 		img: "goldArrow",
 		category: "range",
-		craftTime: 7000,
+		craftTime: weaponSettings.arrows.gold.craftTime,
 		use : function(player) {
 			player.armor.addArrows(this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.gold, quantity: 1}, 
-			{item: Wood.mahogony, quantity: 1}
+			{item: Bar.gold, quantity: weaponSettings.arrows.gold.barCraftQuantity}, 
+			{item: Wood.mahogony, quantity: weaponSettings.arrows.gold.woodCraftQuantity}
 		]
 	}),
 
 	platinum: new ItemTemplate({
 		name : "Platinum Arrow", 
-		price : 5000, 
-		bonus : 56,
+		price : weaponSettings.arrows.platinum.price,
+		bonus : weaponSettings.arrows.platinum.bonus,
 		img: "platinumArrow",
 		category: "range",
-		craftTime: 8000,
+		craftTime: weaponSettings.arrows.platinum.craftTime,
 		use : function(player) {
 			player.armor.addArrows(this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.platinum, quantity: 1}, 
-			{item: Wood.magic, quantity: 1}
+			{item: Bar.platinum, quantity: weaponSettings.arrows.platinum.barCraftQuantity}, 
+			{item: Wood.magic, quantity: weaponSettings.arrows.platinum.woodCraftQuantity}
 		]
 	}),
 
 	diamond: new ItemTemplate({
 		name : "Diamond Arrow", 
-		price : 10000, 
-		bonus : 76,
+		price : weaponSettings.arrows.diamond.price,
+		bonus : weaponSettings.arrows.diamond.bonus,
 		img: "diamondArrow",
 		category: "range",
-		craftTime: 10000,
+		craftTime: weaponSettings.arrows.diamond.craftTime,
 		use : function(player) {
 			player.armor.addArrows(this, player.inventory);
 			return({used: false})
 		}, 
 		recipe: [
-			{item: Bar.diamond, quantity: 1}, 
-			{item: Wood.super, quantity: 1}
+			{item: Bar.diamond, quantity: weaponSettings.arrows.diamond.barCraftQuantity}, 
+			{item: Wood.super, quantity: weaponSettings.arrows.diamond.woodCraftQuantity}
 		]
 	}),
 }

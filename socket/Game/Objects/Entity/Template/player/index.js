@@ -18,7 +18,7 @@ class PlayerStructure {
 		structure.animation.pants = data.animation.pants || "black";
 		structure.animation.hair = data.animation.hair || "black";
     structure.skills.attackSpeed.delay = 800;
-    structure.skills.attackSpeed.speed = 165;
+    structure.skills.attackSpeed.speed = 120;
     structure.inventory.gold = data.gold === undefined ? 100 : data.gold;
     structure.home.farm.level = data.info.farmLevel;
     structure.home.farm.waterCount = data.info.farmWaterCount;

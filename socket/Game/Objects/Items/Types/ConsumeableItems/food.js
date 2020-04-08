@@ -1,14 +1,13 @@
 const ItemTemplate = require('../../Template')
-
+const {foodSettings, plantSettings, cookedSettings} = require('../../../../../GlobalSettings/itemSettings');
 let food = {
 
 	chicken: new ItemTemplate({ 
 			name: "Chicken",
-			price : 0,
+			price : foodSettings.chicken.price,
 			img: "chicken",
 			category: "rawMeat",
 			useable: false,
-			craftTime: 10000,
 			use : function(player) {
             	return ({skill: player.skills.health, description: "Used In Cooking", used: false});
             }
@@ -16,11 +15,10 @@ let food = {
 
 	cow: new ItemTemplate({ 
 			name: "Cow",
-			price : 0,
+			price : foodSettings.cow.price,
 			img: "cow",
 			category: "rawMeat",
 			useable: false,
-			craftTime: 10000,
 			use : function(player) {
             	return ({skill: player.skills.health, description: "Used In Cooking", used: false});
             }
@@ -28,11 +26,10 @@ let food = {
 
 	llama: new ItemTemplate({ 
 			name: "Llama",
-			price : 0,
+			price : foodSettings.llama.price,
 			img: "llama",
 			category: "rawMeat",
 			useable: false,
-			craftTime: 10000,
 			use : function(player) {
             	return ({skill: player.skills.health, description: "Used In Cooking", used: false});
             }
@@ -40,11 +37,10 @@ let food = {
 
 	pig: new ItemTemplate({ 
 			name: "Pig",
-			price : 0,
+			price : foodSettings.pig.price,
 			img: "pig",
 			category: "rawMeat",
 			useable: false,
-			craftTime: 10000,
 			use : function(player) {
             	return ({skill: player.skills.health, description: "Used In Cooking", used: false});
             }
@@ -52,11 +48,10 @@ let food = {
 
 	turkey: new ItemTemplate({ 
 			name: "Turkey",
-			price : 0,
+			price : foodSettings.turkey.price,
 			img: "turkey",
 			category: "rawMeat",
 			useable: false,
-			craftTime: 10000,
 			use : function(player) {
             	return ({skill: player.skills.health, description: "Used In Cooking", used: false});
             }
@@ -66,11 +61,10 @@ let food = {
 let plants = {
 	carrot: new ItemTemplate({ 
 			name: "Carrot",
-			price : 0,
+			price : plantSettings.carrot.price,
 			img: "carrot",
 			category: "plants",
 			useable: false,
-			craftTime: 5000,
 			use : function(player) {
             	return ({description: "Used For Cooking carrots", used: false});
         	}
@@ -78,11 +72,10 @@ let plants = {
 
 	potatoes: new ItemTemplate({ 
 			name: "Potatoes", 
-			price : 0,
+			price : plantSettings.potatoes.price,
 			img: "potatoes",
 			category: "plants",
 			useable: false,
-			craftTime: 5000,
 			use : function(player) {
             	return ({description: "Used For Cooking Potatoes", used: false});
         	}
@@ -90,11 +83,10 @@ let plants = {
 
 	corn: new ItemTemplate({ 
 			name: "Corn",
-			price : 0,
+			price : plantSettings.corn.price,
 			img: "corn",
 			category: "plants",
 			useable: false,
-			craftTime: 5000,
 			use : function(player) {
             	return ({description: "Used For Cooking Corn", used: false});
         	}
@@ -102,11 +94,10 @@ let plants = {
 
 	cucumber: new ItemTemplate({ 
 			name: "cucumber", 
-			price : 0,
+			price : plantSettings.cucumber.price,
 			img: "cucumber",
 			category: "plants",
 			useable: false,
-			craftTime: 5000,
 			use : function(player) {
             	return ({description: "Used For Cooking Cucumber", used: false});
         	}
@@ -114,11 +105,10 @@ let plants = {
 
 	tomatoes: new ItemTemplate({ 
 			name: "Tomatoes", 
-			price : 0,
+			price : plantSettings.tomatoes.price,
 			img: "tomatoe",
 			category: "plants",
 			useable: false,
-			craftTime: 5000,
 			use : function(player) {
             	return ({description: "Used For Cooking Tomatoes", used: false});
         	}
@@ -126,11 +116,10 @@ let plants = {
 
 	artichoke: new ItemTemplate({ 
 			name: "Artichoke", 
-			price : 0,
+			price : plantSettings.artichoke.price,
 			img: "artichoke",
 			category: "plants",
 			useable: false,
-			craftTime: 5000,
 			use : function(player) {
             	return ({description: "Used For Cooking Artichoke", used: false});
         	}
@@ -142,12 +131,13 @@ let cookedFood = {
 
 	chicken: new ItemTemplate({ 
 			name: "Chicken (C)", 
-			price : 5,
+			price : cookedSettings.chicken.price,
 			img: "chicken",
+			craftTime: cookedSettings.chicken.craftTime,
 			category: "cookedMeat",
 			use : function(player) {
-				player.skills.hunger.giveLimit(3)
-				player.skills.hunger.addXp(20)
+				player.skills.hunger.giveLimit(cookedSettings.chicken.bonus)
+				player.skills.hunger.addXp(cookedSettings.chicken.xp)
 
             	return ({skill: player.skills.hunger, description: "Eat Up", used: true});
             },
@@ -156,12 +146,13 @@ let cookedFood = {
 
 	cow: new ItemTemplate({ 
 			name: "Cow (C)", 
-			price : 20,
+			price : cookedSettings.cow.price,
 			img: "cow",
+			craftTime: cookedSettings.cow.craftTime,
 			category: "cookedMeat",
 			use : function(player) {
-				player.skills.hunger.giveLimit(6)
-				player.skills.hunger.addXp(40)
+				player.skills.hunger.giveLimit(cookedSettings.cow.bonus)
+				player.skills.hunger.addXp(cookedSettings.cow.xp)
 
             	return ({skill: player.skills.hunger, description: "Eat Up", used: true});
             },
@@ -170,12 +161,14 @@ let cookedFood = {
 	
 	llama: new ItemTemplate({ 
 			name: "Llama (C)", 
-			price : 50,
+			price : cookedSettings.llama.price,
 			img: "llama",
+			craftTime: cookedSettings.llama.craftTime,
 			category: "cookedMeat",
+			craftTime: 5000,
 			use : function(player) {
-				player.skills.hunger.giveLimit(10)
-				player.skills.hunger.addXp(80)
+				player.skills.hunger.giveLimit(cookedSettings.llama.bonus)
+				player.skills.hunger.addXp(cookedSettings.llama.xp)
 
             	return ({skill: player.skills.hunger, description: "Eat Up", used: true});
             },
@@ -184,12 +177,13 @@ let cookedFood = {
 	
 	pig: new ItemTemplate({ 
 			name: "Pig (C)", 
-			price : 100,
+			price : cookedSettings.pig.price,
 			img: "pig",
+			craftTime: cookedSettings.pig.craftTime,
 			category: "cookedMeat",
 			use : function(player) {
-				player.skills.hunger.giveLimit(20)
-				player.skills.hunger.addXp(160)
+				player.skills.hunger.giveLimit(cookedSettings.pig.bonus)
+				player.skills.hunger.addXp(cookedSettings.pig.xp)
 
             	return ({skill: player.skills.hunger, description: "Eat Up", used: true});
             },
@@ -198,12 +192,13 @@ let cookedFood = {
 	
 	turkey: new ItemTemplate({ 
 			name: "Turkey (C)", 
-			price : 200,
+			price : cookedSettings.turkey.price,
 			img: "turkey",
+			craftTime: cookedSettings.turkey.craftTime,
 			category: "cookedMeat",
 			use : function(player) {
-				player.skills.hunger.giveLimit(40)
-				player.skills.hunger.addXp(300)
+				player.skills.hunger.giveLimit(cookedSettings.turkey.bonus)
+				player.skills.hunger.addXp(cookedSettings.turkey.xp)
 
             	return ({skill: player.skills.hunger, description: "Eat Up", used: true});
             },
@@ -212,12 +207,13 @@ let cookedFood = {
 	
 	carrots: new ItemTemplate({ 
 			name: "Carrots (C)", 
-			price : 5,
+			price : cookedSettings.carrots.price,
 			img: "carrot",
+			craftTime: cookedSettings.carrots.craftTime,
 			category: "cookedPlants",
 			use : function(player) {
-				player.skills.hunger.giveLimit(1)
-				player.skills.hunger.addXp(2)
+				player.skills.hunger.giveLimit(cookedSettings.carrots.bonus)
+				player.skills.hunger.addXp(cookedSettings.carrots.xp)
 
             	return ({skill: player.skills.hunger, description: "Eat Up", used: true});
             },
@@ -226,12 +222,13 @@ let cookedFood = {
 	
 	potatoes: new ItemTemplate({ 
 			name: "Potatoes (C)", 
-			price : 5,
+			price : cookedSettings.potatoes.price,
 			img: "potatoe",
+			craftTime: cookedSettings.potatoes.craftTime,
 			category: "cookedPlants",
 			use : function(player) {
-				player.skills.hunger.giveLimit(5)
-				player.skills.hunger.addXp(10)
+				player.skills.hunger.giveLimit(cookedSettings.potatoes.bonus)
+				player.skills.hunger.addXp(cookedSettings.potatoes.xp)
 
             	return ({skill: player.skills.hunger, description: "Eat Up", used: true});
             },
@@ -240,12 +237,13 @@ let cookedFood = {
 	
 	corn: new ItemTemplate({ 
 			name: "Corn (C)", 
-			price : 5,
+			price : cookedSettings.corn.price,
 			img: "corn",
+			craftTime: cookedSettings.corn.craftTime,
 			category: "cookedPlants",
 			use : function(player) {
-				player.skills.hunger.giveLimit(10)
-				player.skills.hunger.addXp(25)
+				player.skills.hunger.giveLimit(cookedSettings.corn.bonus)
+				player.skills.hunger.addXp(cookedSettings.corn.xp)
 
             	return ({skill: player.skills.hunger, description: "Eat Up", used: true});
             },
@@ -254,12 +252,13 @@ let cookedFood = {
 	
 	cucumber: new ItemTemplate({ 
 			name: "Cucumber (C)", 
-			price : 5,
+			price : cookedSettings.cucumber.price,
 			img: "cucumber",
+			craftTime: cookedSettings.cucumber.craftTime,
 			category: "cookedPlants",
 			use : function(player) {
-				player.skills.hunger.giveLimit(20)
-				player.skills.hunger.addXp(50)
+				player.skills.hunger.giveLimit(cookedSettings.cucumber.bonus)
+				player.skills.hunger.addXp(cookedSettings.cucumber.xp)
 
             	return ({skill: player.skills.hunger, description: "Eat Up", used: true});
             },
@@ -268,12 +267,13 @@ let cookedFood = {
 	
 	tomatoes: new ItemTemplate({ 
 			name: "Tomatoes (C)", 
-			price : 5,
+			price : cookedSettings.tomatoes.price,
 			img: "tomatoe",
+			craftTime: cookedSettings.tomatoes.craftTime,
 			category: "cookedPlants",
 			use : function(player) {
-				player.skills.hunger.giveLimit(40)
-				player.skills.hunger.addXp(100)
+				player.skills.hunger.giveLimit(cookedSettings.tomatoes.bonus)
+				player.skills.hunger.addXp(cookedSettings.tomatoes.xp)
 
             	return ({skill: player.skills.hunger, description: "Eat Up", used: true});
             },
@@ -282,12 +282,13 @@ let cookedFood = {
 	
 	artichoke: new ItemTemplate({ 
 			name: "Artichoke (C)", 
-			price : 5,
+			price : cookedSettings.artichoke.price,
 			img: "artichoke",
+			craftTime: cookedSettings.artichoke.craftTime,
 			category: "cookedPlants",
 			use : function(player) {
-				player.skills.hunger.giveLimit(80)
-				player.skills.hunger.addXp(200)
+				player.skills.hunger.giveLimit(cookedSettings.artichoke.xp)
+				player.skills.hunger.addXp(cookedSettings.artichoke.xp)
             	return ({skill: player.skills.hunger, description: "Eat Up", used: true});
             },
 			recipe: [{item: plants.artichoke, quantity: 1}]

@@ -1,5 +1,6 @@
 const EntityStructure = require('../structure')
 const {RandomInt} = require('../../../../Helpers')
+const {oreSettings} = require('../../../../../GlobalSettings/entitySettings')
 
 class OreStructure {
 
@@ -24,9 +25,9 @@ class OreStructure {
 	}
 
 	calculateHealth = (level, boost) => {
-	    let exponent = 1.9 + boost
-	    let baseXP = 4
-	    return RandomInt(Math.floor(baseXP * (level ^ 1.9)), Math.floor(baseXP * (level ^ exponent)))
+	    let exponent = oreSettings.exponent + boost
+	    let baseXP = oreSettings.base
+	    return RandomInt(Math.floor(baseXP * (level ^ oreSettings.exponent)), Math.floor(baseXP * (level ^ exponent)))
 	}
 
 	copper = (items, level) => {
@@ -35,7 +36,7 @@ class OreStructure {
 		structure.itemName = "copper";
 		structure.info.description = "Copper mine, drops copper ore";
 		structure.info.type = "ore";
-		structure.skills.health.value = this.calculateHealth(level, 0);
+		structure.skills.health.value = this.calculateHealth(level, oreSettings.copper.hpOffset);
 		structure.body.width = 32;
 		structure.body.height = 32;
 		return (structure);
@@ -47,7 +48,7 @@ class OreStructure {
 		structure.itemName = "tin";
 		structure.info.description = "Tin Mine, drops tin ore";
 		structure.info.type = "ore";
-		structure.skills.health.value = this.calculateHealth(level, 0);
+		structure.skills.health.value = this.calculateHealth(level, oreSettings.tin.hpOffset);
 		structure.body.width = 32;
 		structure.body.height = 32;
 
@@ -60,7 +61,7 @@ class OreStructure {
 		structure.itemName = "iron";
 		structure.info.description = "Iron Mine, drops iron ore";
 		structure.info.type = "ore";
-		structure.skills.health.value = this.calculateHealth(level, 0.4);
+		structure.skills.health.value = this.calculateHealth(level, oreSettings.iron.hpOffset);
 		structure.body.width = 32;
 		structure.body.height = 32;
 
@@ -73,7 +74,7 @@ class OreStructure {
 		structure.itemName = "gold";
 		structure.info.description = "Gold Mine, drops gold ore";
 		structure.info.type = "ore";
-		structure.skills.health.value = this.calculateHealth(level, 0.8);
+		structure.skills.health.value = this.calculateHealth(level, oreSettings.gold.hpOffset);
 		structure.body.width = 32;
 		structure.body.height = 32;
 
@@ -86,7 +87,7 @@ class OreStructure {
 		structure.itemName = "platinum";
 		structure.info.description = "Platinum Mine, drops platinum ore";
 		structure.info.type = "ore";
-		structure.skills.health.value = this.calculateHealth(level, 1.2);
+		structure.skills.health.value = this.calculateHealth(level, oreSettings.platinum.hpOffset);
 		structure.body.width = 32;
 		structure.body.height = 32;
 
@@ -99,7 +100,7 @@ class OreStructure {
 		structure.itemName = "diamond";
 		structure.info.description = "Diamond Mine, drops diamond ore";
 		structure.info.type = "ore";
-		structure.skills.health.value = this.calculateHealth(level, 2);
+		structure.skills.health.value = this.calculateHealth(level, oreSettings.diamond.hpOffset);
 		structure.body.width = 32;
 		structure.body.height = 32;
 

@@ -1,5 +1,6 @@
 const EntityStructure = require('../structure')
 const {RandomInt} = require('../../../../Helpers')
+const {treeSettings} = require('../../../../../GlobalSettings/entitySettings')
 
 class TreeStructure {
 	tree(items, level) {
@@ -21,9 +22,9 @@ class TreeStructure {
 	}
 	 
 	calculateHealth = (level, boost) => {
-	    let exponent = 1.9 + boost
-	    let baseXP = 4
-	    return RandomInt(Math.floor(baseXP * (level ^ 1.9)), Math.floor(baseXP * (level ^ exponent)))
+	    let exponent = treeSettings.exponent + boost
+	    let baseXP = treeSettings.base
+	    return RandomInt(Math.floor(baseXP * (level ^ treeSettings.exponent)), Math.floor(baseXP * (level ^ exponent)))
 	}
 
 	oak = (items, level) => {
@@ -32,7 +33,7 @@ class TreeStructure {
 		structure.itemName = "oak";
 		structure.info.description = "Oak Tree, drops Oak Logs";
 		structure.info.type = "tree";
-		structure.skills.health.value = this.calculateHealth(level, 0);
+		structure.skills.health.value = this.calculateHealth(level, treeSettings.oak.hpOffset);
 		return (structure);
 	}
 
@@ -42,7 +43,7 @@ class TreeStructure {
 		structure.itemName = "maple";
 		structure.info.description = "Maple Tree, drops Maple Logs";
 		structure.info.type = "tree";
-		structure.skills.health.value = this.calculateHealth(level, 0.3);
+		structure.skills.health.value = this.calculateHealth(level, treeSettings.maple.hpOffset);
 		return (structure);
 	}
 
@@ -52,7 +53,7 @@ class TreeStructure {
 		structure.itemName = "mahogony";
 		structure.info.description = "Mahogony Tree, drops Mahogony Logs";
 		structure.info.type = "tree";
-		structure.skills.health.value = this.calculateHealth(level, 0.6);
+		structure.skills.health.value = this.calculateHealth(level, treeSettings.mahogony.hpOffset);
 		return (structure);
 	}
 
@@ -62,7 +63,7 @@ class TreeStructure {
 		structure.itemName = "magic"
 		structure.info.description = "Magic Tree, drops Magic Logs";
 		structure.info.type = "tree";
-		structure.skills.health.value = this.calculateHealth(level, 0.9);
+		structure.skills.health.value = this.calculateHealth(level, treeSettings.magic.hpOffset);
 		return (structure);
 	}
 
@@ -72,7 +73,7 @@ class TreeStructure {
 		structure.itemName = "super"
 		structure.info.description = "Super Tree, drops Super Logs";
 		structure.info.type = "tree";
-		structure.skills.health.value = this.calculateHealth(level, 1.4);
+		structure.skills.health.value = this.calculateHealth(level, treeSettings.super.hpOffset);
 		return (structure);
 	}
 }

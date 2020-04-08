@@ -1,6 +1,6 @@
 const EntityStructure = require('../structure')
 const {RandomInt} = require('../../../../Helpers')
-
+const {bossSettings, enemySettings} = require('../../../../../GlobalSettings/entitySettings')
 class EnemyStructure {
 
 	randomItems(items, enemy, level, count) {
@@ -102,11 +102,6 @@ class EnemyStructure {
 		let enemy = currentTerrainEnemies[RandomInt(0,currentTerrainEnemies.length - 1)](items, level)
 		enemy.inventory.max = 7;
 		return (enemy)
-
-
-
-
-
 	}
 
 	bossIndex(level) {
@@ -185,8 +180,8 @@ class EnemyStructure {
 	}
 
 	calculateLevel(level, boost) {
-	    let exponent = 1.1 + boost
-	    let baseXP = 0.9
+	    let exponent = enemySettings.exponent + boost
+	    let baseXP = enemySettings.base
 	    return Math.floor(baseXP * (level ^ exponent))
 	}
 	
@@ -215,8 +210,8 @@ class EnemyStructure {
 	}
 
 	calculateBossLevel(level, baseBonus, bonus) {
-		let exponent = 1.3 + bonus
-	    let baseXP = 0.9 + baseBonus
+		let exponent = bossSettings.level.exponent + bonus
+	    let baseXP = bossSettings.level.base + baseBonus
 	    return Math.floor(baseXP * (level ^ exponent))
 	}
 
@@ -224,18 +219,18 @@ class EnemyStructure {
 	makeBossSkills(level) {
 		return ({
 				health : { 
-					value: this.calculateBossLevel(level, 100, 7),
+					value: this.calculateBossLevel(level, bossSettings.health.base, bossSettings.health.exponent),
 				},
 				attack : { 
-					value: this.calculateBossLevel(level,0, 0.4),
+					value: this.calculateBossLevel(level,bossSettings.attack.base, bossSettings.attack.exponent),
 				},
 				defense : { 
-					value: this.calculateBossLevel(level,0, 0.6),
+					value: this.calculateBossLevel(level,bossSettings.defense.base, bossSettings.defense.exponent),
 				},
 				attackSpeed : { 
-					value: this.calculateBossLevel(level, 0, 0),
-					speed : 400,
-					delay : 450,
+					value: this.calculateBossLevel(level, bossSettings.speed.base, bossSettings.speed.exponent),
+					speed : bossSettings.speed.value,
+					delay : bossSettings.speed.delay,
 				},
 		})
 	}
@@ -262,7 +257,7 @@ class EnemyStructure {
 		structure.info.description = "Rock Solid Golem";
 		structure.info.type = "enemy";
 		let newSkills = this.makeBossSkills(level);
-		structure.skills = {...structure.skills, newSkills};
+		structure.skills = {...structure.skills, ...newSkills};
 		structure.body.width = 75;
 		structure.body.height = 75;
 		structure.inventory.gold = this.bossGold(level);
@@ -276,7 +271,7 @@ class EnemyStructure {
 		structure.info.description = "Rock Solid dirt Golem";
 		structure.info.type = "enemy";
 		let newSkills = this.makeBossSkills(level);
-		structure.skills = {...structure.skills, newSkills};
+		structure.skills = {...structure.skills, ...newSkills};
 		structure.body.width = 75;
 		structure.body.height = 75;
 		structure.inventory.gold = this.bossGold(level);
@@ -291,7 +286,7 @@ class EnemyStructure {
 		structure.info.description = "Rock Solid Lava Golem";
 		structure.info.type = "enemy";
 		let newSkills = this.makeBossSkills(level);
-		structure.skills = {...structure.skills, newSkills};
+		structure.skills = {...structure.skills, ...newSkills};
 		structure.body.width = 75;
 		structure.body.height = 75;
 		structure.inventory.gold = this.bossGold(level);
@@ -307,7 +302,7 @@ class EnemyStructure {
 		structure.info.description = "Rock Solid Grass Golem";
 		structure.info.type = "enemy";
 		let newSkills = this.makeBossSkills(level);
-		structure.skills = {...structure.skills, newSkills};
+		structure.skills = {...structure.skills, ...newSkills};
 		structure.body.width = 75;
 		structure.body.height = 75;
 		structure.inventory.gold = this.bossGold(level);
@@ -322,7 +317,7 @@ class EnemyStructure {
 		structure.info.description = "Rock Solid Sand Golem";
 		structure.info.type = "enemy";
 		let newSkills = this.makeBossSkills(level);
-		structure.skills = {...structure.skills, newSkills};
+		structure.skills = {...structure.skills, ...newSkills};
 		structure.body.width = 75;
 		structure.body.height = 75;
 		structure.inventory.gold = this.bossGold(level);
@@ -336,14 +331,7 @@ class EnemyStructure {
 		structure.animation.img = "skeleton";
 		structure.info.description = "Bones and Brawn";
 		structure.info.type = "enemy";
-		let skillSettings = {
-								speed: 200, 
-								delay: 800,
-								attackBonus : 0,
-								healthBonus : 0,
-								defenseBonus : 0,
-							}
-		let newSkills = this.makeSkills(level, skillSettings);
+		let newSkills = this.makeSkills(level, enemySettings.skeleton.skillSettings);
 		structure.skills = {...structure.skills, ...newSkills}
 		structure.inventory.gold = this.enemyGold(level);
 		return(structure)
@@ -354,14 +342,7 @@ class EnemyStructure {
 		structure.animation.img = "femaleDrake";
 		structure.info.description = "Of the drake species, this is female";
 		structure.info.type = "enemy";
-		let skillSettings = {
-								speed: 200, 
-								delay: 800,
-								attackBonus : 0.1,
-								healthBonus : 0.1,
-								defenseBonus : 0.1,
-							}
-		let newSkills = this.makeSkills(level, skillSettings);
+		let newSkills = this.makeSkills(level, enemySettings.femaleDrake.skillSettings);
 		structure.skills = {...structure.skills, ...newSkills}
 		structure.inventory.gold = this.enemyGold(level);
 
@@ -373,14 +354,7 @@ class EnemyStructure {
 		structure.animation.img = "blueFemaleDrake";
 		structure.info.description = "Of the drake species, this is female";
 		structure.info.type = "enemy";
-		let skillSettings = {
-								speed: 200, 
-								delay: 800,
-								attackBonus : 0,
-								healthBonus : 0,
-								defenseBonus : 0,
-							}
-		let newSkills = this.makeSkills(level, skillSettings);
+		let newSkills = this.makeSkills(level, enemySettings.blueFemaleDrake.skillSettings);
 		structure.skills = {...structure.skills, ...newSkills}
 		structure.inventory.gold = this.enemyGold(level);
 
@@ -392,14 +366,7 @@ class EnemyStructure {
 		structure.animation.img = "darkFemaleDrake";
 		structure.info.description = "Of the drake species, this is female";
 		structure.info.type = "enemy";
-		let skillSettings = {
-								speed: 200, 
-								delay: 800,
-								attackBonus : 0,
-								healthBonus : 0,
-								defenseBonus : 0,
-							}
-		let newSkills = this.makeSkills(level, skillSettings);
+		let newSkills = this.makeSkills(level, enemySettings.darkFemaleDrake.skillSettings);
 		structure.skills = {...structure.skills, ...newSkills}
 		structure.inventory.gold = this.enemyGold(level);
 
@@ -410,14 +377,7 @@ class EnemyStructure {
 		structure.animation.img = "maleDrake";
 		structure.info.description = "Of the drake species, this is male";
 		structure.info.type = "enemy";
-		let skillSettings = {
-								speed: 200, 
-								delay: 800,
-								attackBonus : 0.1,
-								healthBonus : 0.1,
-								defenseBonus : 0.1,
-							}
-		let newSkills = this.makeSkills(level, skillSettings);
+		let newSkills = this.makeSkills(level, enemySettings.maleDrake.skillSettings);
 		structure.skills = {...structure.skills, ...newSkills}
 		structure.inventory.gold = this.enemyGold(level);
 
@@ -429,14 +389,7 @@ class EnemyStructure {
 		structure.animation.img = "blueMaleDrake";
 		structure.info.description = "Of the drake species, this is male";
 		structure.info.type = "enemy";
-		let skillSettings = {
-								speed: 200, 
-								delay: 800,
-								attackBonus : 0,
-								healthBonus : 0,
-								defenseBonus : 0,
-							}
-		let newSkills = this.makeSkills(level, skillSettings);
+		let newSkills = this.makeSkills(level, enemySettings.blueMaleDrake.skillSettings);
 		structure.skills = {...structure.skills, ...newSkills}
 		structure.inventory.gold = this.enemyGold(level);
 
@@ -447,14 +400,7 @@ class EnemyStructure {
 		structure.animation.img = "darkMaleDrake";
 		structure.info.description = "Of the drake species, this is female";
 		structure.info.type = "enemy";
-		let skillSettings = {
-								speed: 200, 
-								delay: 800,
-								attackBonus : 0,
-								healthBonus : 0,
-								defenseBonus : 0,
-							}
-		let newSkills = this.makeSkills(level, skillSettings);
+		let newSkills = this.makeSkills(level, enemySettings.darkMaleDrake.skillSettings);
 		structure.skills = {...structure.skills, ...newSkills}
 		structure.inventory.gold = this.enemyGold(level);
 
@@ -478,14 +424,7 @@ class EnemyStructure {
 		structure.animation.img = "blueImpPitchFork";
 		structure.info.description = "Cool Blue With A Fork";
 		structure.info.type = "enemy";
-		let skillSettings = {
-								speed: 200, 
-								delay: 800,
-								attackBonus : 0.1,
-								healthBonus : 0,
-								defenseBonus : 0,
-							}
-		let newSkills = this.makeSkills(level, skillSettings);
+		let newSkills = this.makeSkills(level, enemySettings.blueImpPitchFork.skillSettings);
 		structure.skills = {...structure.skills, ...newSkills}
 		structure.inventory.gold = this.enemyGold(level);
 		structure.animation.spriteSheetEnd = this.impSpriteSheetEnd()
@@ -498,14 +437,7 @@ class EnemyStructure {
 		structure.animation.img = "blueImpSword";
 		structure.info.description = "Cool Blue With A Sword";
 		structure.info.type = "enemy";
-		let skillSettings = {
-								speed: 200, 
-								delay: 800,
-								attackBonus : 0.1,
-								healthBonus : -0.1,
-								defenseBonus : 0.1,
-							}
-		let newSkills = this.makeSkills(level, skillSettings);
+		let newSkills = this.makeSkills(level, enemySettings.blueImpSword.skillSettings);
 		structure.skills = {...structure.skills, ...newSkills}
 		structure.inventory.gold = this.enemyGold(level);
 		structure.animation.spriteSheetEnd = this.impSpriteSheetEnd()
@@ -518,14 +450,7 @@ class EnemyStructure {
 		structure.animation.img = "blueImp";
 		structure.info.description = "Cool Blue";
 		structure.info.type = "enemy";
-		let skillSettings = {
-								speed: 200, 
-								delay: 800,
-								attackBonus : 0,
-								healthBonus : 0,
-								defenseBonus : 0,
-							}
-		let newSkills = this.makeSkills(level, skillSettings);
+		let newSkills = this.makeSkills(level, enemySettings.blueImp.skillSettings);
 		structure.skills = {...structure.skills, ...newSkills}
 		structure.inventory.gold = this.enemyGold(level);
 		structure.animation.spriteSheetEnd = this.impSpriteSheetEnd()
@@ -538,14 +463,7 @@ class EnemyStructure {
 		structure.animation.img = "redImpPitchFork";
 		structure.info.description = "Hot Red With A Fork";
 		structure.info.type = "enemy";
-		let skillSettings = {
-								speed: 200, 
-								delay: 800,
-								attackBonus : 0.3,
-								healthBonus : 0,
-								defenseBonus : 0,
-							}
-		let newSkills = this.makeSkills(level, skillSettings);
+		let newSkills = this.makeSkills(level, enemySettings.redImpPitchFork.skillSettings);
 		structure.skills = {...structure.skills, ...newSkills}
 		structure.inventory.gold = this.enemyGold(level);
 		structure.animation.spriteSheetEnd = this.impSpriteSheetEnd()
@@ -558,14 +476,7 @@ class EnemyStructure {
 		structure.animation.img = "redImpSword";
 		structure.info.description = "Hot Red With A Sword";
 		structure.info.type = "enemy";
-		let skillSettings = {
-								speed: 200, 
-								delay: 800,
-								attackBonus : 0.1,
-								healthBonus : -0.1,
-								defenseBonus : 0.2,
-							}
-		let newSkills = this.makeSkills(level, skillSettings);
+		let newSkills = this.makeSkills(level, enemySettings.redImpSword.skillSettings);
 		structure.skills = {...structure.skills, ...newSkills}
 		structure.inventory.gold = this.enemyGold(level);
 		structure.animation.spriteSheetEnd = this.impSpriteSheetEnd()
@@ -577,14 +488,7 @@ class EnemyStructure {
 		structure.animation.img = "redImp";
 		structure.info.description = "Hot Red Imp";
 		structure.info.type = "enemy";
-		let skillSettings = {
-								speed: 200, 
-								delay: 800,
-								attackBonus : 0,
-								healthBonus : 0.4,
-								defenseBonus : 0,
-							}
-		let newSkills = this.makeSkills(level, skillSettings);
+		let newSkills = this.makeSkills(level, enemySettings.redImp.skillSettings);
 		structure.skills = {...structure.skills, ...newSkills}
 		structure.inventory.gold = this.enemyGold(level);
 		structure.animation.spriteSheetEnd = this.impSpriteSheetEnd()
@@ -597,14 +501,7 @@ class EnemyStructure {
 		structure.animation.img = "greenImpPitchFork";
 		structure.info.description = "Earth Green With A Fork";
 		structure.info.type = "enemy";
-		let skillSettings = {
-								speed: 200, 
-								delay: 800,
-								attackBonus : 0.3,
-								healthBonus : 0.2,
-								defenseBonus : 0,
-							}
-		let newSkills = this.makeSkills(level, skillSettings);
+		let newSkills = this.makeSkills(level, enemySettings.greenImpPitchFork.skillSettings);
 		structure.skills = {...structure.skills, ...newSkills}
 		structure.inventory.gold = this.enemyGold(level);
 		structure.animation.spriteSheetEnd = this.impSpriteSheetEnd()
@@ -616,14 +513,7 @@ class EnemyStructure {
 		structure.animation.img = "greenImpSword";
 		structure.info.description = "Earth Green With A Sword";
 		structure.info.type = "enemy";
-		let skillSettings = {
-								speed: 200, 
-								delay: 800,
-								attackBonus : 0.3,
-								healthBonus : -0.3,
-								defenseBonus : 0.3,
-							}
-		let newSkills = this.makeSkills(level, skillSettings);
+		let newSkills = this.makeSkills(level, enemySettings.greenImpSword.skillSettings);
 		structure.skills = {...structure.skills, ...newSkills}
 		structure.inventory.gold = this.enemyGold(level);
 		structure.animation.spriteSheetEnd = this.impSpriteSheetEnd()
@@ -636,14 +526,7 @@ class EnemyStructure {
 		structure.animation.img = "greenImp";
 		structure.info.description = "Earth Green Imp";
 		structure.info.type = "enemy";
-		let skillSettings = {
-								speed: 200, 
-								delay: 800,
-								attackBonus : 0.1,
-								healthBonus : 0.5,
-								defenseBonus : 0,
-							}
-		let newSkills = this.makeSkills(level, skillSettings);
+		let newSkills = this.makeSkills(level, enemySettings.greenImp.skillSettings);
 		structure.skills = {...structure.skills, ...newSkills}
 		structure.inventory.gold = this.enemyGold(level);
 		structure.animation.spriteSheetEnd = this.impSpriteSheetEnd()

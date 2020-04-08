@@ -1,12 +1,12 @@
 const {Timer, RigidBody, RandomInt} = require('../../../../Helpers')
-
+const {farmSettings} = require('../../../../../GlobalSettings');
 class Farm {
 	constructor(items, settings) {
 		this.seeds = items.getSubcategory("Resources", "Seeds");
 		this.waterItems = items.getSubcategory("Consumeable", "Water");
 		this.level = settings.level || 0;
-		this.prices = [1000, 10000, 100000, 1000000, 5000000, 20000000];
-		this.waterTimer = new Timer(5000);
+		this.prices = farmSettings.prices;
+		this.waterTimer = new Timer(farmSettings.waterTimer);
 		this.rows = 3 + this.level;
 		this.columns = 10;
 		this.max = this.rows * this.columns;
@@ -15,18 +15,7 @@ class Farm {
 		this.plots = [];
 		this.water = settings.waterCount || 0;
 		this.makePlots(items);
-
-
-		this.upgradeButton = {body: new RigidBody({
-				x: 280,
-				y: 40,
-				width: 50,
-				height: 25
-			})
-		}
-
-
-		// this.test()
+		this.upgradeButton = {body: new RigidBody(farmSettings.upgradeButtonBody)}
 
 	}
 
@@ -183,10 +172,10 @@ class Farm {
 	plot(items, body) {
 		let seeds = items.getSubcategory("Resources", "Seeds");
 		return ({
-			timer: new Timer(RandomInt(8000,15000)),
-			decayTimer : new Timer(RandomInt(20000,30000)),
+			timer: new Timer(RandomInt(farmSettings.plot.timer.start, farmSettings.plot.timer.end)),
+			decayTimer : new Timer(RandomInt(farmSettings.plot.decayTimer.start,farmSettings.plot.decayTimer.end)),
 			decaying : false,
-			waterDecayTimer : Timer(RandomInt(15000,25000)),
+			waterDecayTimer : Timer(RandomInt(farmSettings.plot.waterDecayTimer.start, farmSettings.plot.waterDecayTimer.end)),
 			level : 0,
 			seed : false,
 			seeds : seeds,

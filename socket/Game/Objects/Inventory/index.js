@@ -1,4 +1,6 @@
 const Grid = require("../../Helpers/Grid")
+const {inventorySettings} = require("../../../GlobalSettings");
+const {seedSettings} = require("../../../GlobalSettings/itemSettings");
 
 class Inventory {
 	 constructor(items, settings = false) {
@@ -108,9 +110,9 @@ class Inventory {
     }
 
     farm(player, index) {
-      if (this.checkQuantity(index) > 0) {
+      if (this.checkQuantity(index) >= seedSettings.seedsNeededToPlant) {
         if (player.home.farm.plant(this.item(index))) {
-          this.delete(index, 1);
+          this.delete(index, seedSettings.seedsNeededToPlant);
           return true
         }
 
@@ -166,7 +168,7 @@ class Inventory {
     }
 
     sell(index, quantity) {
-      let price = (this.item(index).price * 0.6) * quantity;
+      let price = (this.item(index).price * inventorySettings.sellReturnMultiplier) * quantity;
       this.gold += price;
       this.delete(index, quantity)
     }

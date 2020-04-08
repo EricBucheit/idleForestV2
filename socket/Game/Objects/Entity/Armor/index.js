@@ -1,5 +1,5 @@
 const {RigidBody} = require('../../../Helpers/bodies')
-
+const {armorSettings} = require('../../../../GlobalSettings');
 class Armor {
 	constructor(items) {
 		let id = 0;
@@ -8,20 +8,8 @@ class Armor {
 		this.noItem = items.none();
 		this.arrowItems = items.getSubcategory("Weapon", "Arrows");
 		
-		let armorPos = {
-			helm : {x: 404, y: 200},
-			chest : {x: 404, y: 240},
-			legs : {x: 404, y: 280},
-			feet : {x: 404, y: 320},
-			weapon : {x: 360, y: 240},
-			shield : {x: 448, y: 240},
-			bow : {x: 360, y: 135},
-			arrows : {x: 448, y: 135},
-			pickaxe : {x: 360, y: 175},
-			axe : {x: 448, y: 175},
-		}
-
-
+		let armorPos = armorSettings.positions
+		
 		this.spaces = {
 			helm : this.initializeArmor(items, id++, armorPos.helm),
 			chest : this.initializeArmor(items, id++, armorPos.chest),
@@ -35,21 +23,14 @@ class Armor {
 			axe : this.initializeArmor(items, id++, armorPos.axe),	
 		}
 		
-		this.bonus = {
-			attack : 0,
-			defense: 0,
-			speed: 200,
-			range: 0,
-			mining: 0,
-			woodcutting: 0,
-		}
+		this.bonus = armorSettings.defaultBonus
 	}
 
 	initializeArmor = (items, id, pos) => {
 		return({
 			item: items.none(),
 			noItem : items.none(),
-			body: new RigidBody({x: pos.x, y: pos.y, width: 32, height: 32}),
+			body: new RigidBody({x: pos.x, y: pos.y, width: pos.width, height: pos.height}),
 			id: id,
 
 			set: function(item) {
@@ -57,7 +38,6 @@ class Armor {
 			},
 
 			remove : function(inventory) {
-				
 				if (this.item && this.item.id !== -1 && inventory.add(this.item.copy(), this.item.quantity)) {
 					this.item = this.noItem.copy();
 				}
@@ -124,7 +104,6 @@ class Armor {
 			let armorItemInInventory = inventory.find(tmp).found;
 
 			//*** Comment-1
-
 			if (hasSpace || quantity === 1 || armorItemInInventory) {
 				this.spaces[armorSlot].item = this.noItem.copy()
 				this.spaces[armorSlot].set(item);
@@ -179,10 +158,10 @@ class Armor {
 			
 module.exports = Armor;
 
-		// *** Comment-1
-			// if inventory has space 
-			// or quantity is one, meaning item will be deleted
-			// or armoritem exists in inventory to add to it
-			// then add the item to swap item and inventory item 
+// *** Comment-1
+	// if inventory has space 
+	// or quantity is one, meaning item will be deleted
+	// or armoritem exists in inventory to add to it
+	// then add the item to swap item and inventory item 
 
 

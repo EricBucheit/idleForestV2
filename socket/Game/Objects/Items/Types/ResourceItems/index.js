@@ -1,9 +1,10 @@
 const ItemTemplate = require("../../Template");
 
 const {plants} = require("../ConsumeableItems/food")
+const {barSettings, seedSettings} = require('../../../../../GlobalSettings/itemSettings');
 
-let harvestQuantity = 2;
-let barCreationQuantity = 5;
+let harvestQuantity = seedSettings.harvestQuantity;
+let barCreationQuantity = barSettings.barCreationQuantity;
 
 let Ore = {
 	tin : new ItemTemplate({
@@ -73,7 +74,7 @@ let Bar = {
 			img: "bronze",
 			category: "bar",
 			useable : false,
-			craftTime: 5000,
+			craftTime: barSettings.bronze.craftTime,
 			use : function() {
 				return ({description: "Used To Create Armor and Weapons", used: false});
 			},
@@ -85,7 +86,7 @@ let Bar = {
 			img: "iron",
 			category: "bar",
 			useable : false,
-			craftTime: 6000,
+			craftTime: barSettings.iron.craftTime,
 			use : function() {
 				return ({description: "Used To Create Armor and Weapons", used: false});
 			},
@@ -97,7 +98,7 @@ let Bar = {
 			img: "gold",
 			category: "bar",
 			useable : false,
-			craftTime: 8000,
+			craftTime: barSettings.gold.craftTime,
 			use : function() {
 				return ({description: "Used To Create Armor and Weapons", used: false});
 			},
@@ -109,7 +110,7 @@ let Bar = {
 			img: "platinum",
 			category: "bar",
 			useable : false,
-			craftTime: 9000,
+			craftTime: barSettings.platinum.craftTime,
 			use : function() {
 				return ({description: "Used To Create Armor and Weapons", used: false});
 			},
@@ -121,7 +122,7 @@ let Bar = {
 			img: "diamond",
 			category: "bar",
 			useable : false,
-			craftTime: 10000,
+			craftTime: barSettings.diamond.craftTime,
 			use : function() {
 				return ({description: "Used To Craft Diamond Armor", used: false});
 			},

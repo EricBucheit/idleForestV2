@@ -25,8 +25,8 @@ const ClickEvents = require('./Game/Events/Inputs');
 const PlayerConnect = require('./Game/Events/PlayerConnect');
 const Update = require('./Game/Logic/Update');
 const Instantiate = require('./Game/Logic/Instantiate');
-
 let credits = new Credit()
+
 //class initialization
 Instantiater = new Instantiate();
 let Updater = new Update();

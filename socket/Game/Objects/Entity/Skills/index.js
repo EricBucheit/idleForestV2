@@ -1,5 +1,5 @@
 const {Timer} = require('../../../Helpers/functions')
-
+const {skillSettings} = require("../../../../GlobalSettings");
 class Skills {
 	constructor(settings) {
 		let skill_id = 0;
@@ -17,11 +17,10 @@ class Skills {
 	}
 
 	createSkill(settings, name, id) {
-		let delay = settings.delay || 1000;
-		let speed = settings.speed || 200;
-
+		let delay = settings.delay || skillSettings.defaultDelay;
+		let speed = settings.speed || skillSettings.defaultSpeed;
 		let skill = {
-			skill_id : id,
+	 		skill_id : id,
 			name: name,
 			value: settings.value,
 			current : settings.value,
@@ -29,9 +28,9 @@ class Skills {
 			xp : 0,
 			delayTime : delay,
 			speed : speed,
-			threshold : Math.round(1.1 * (Math.pow(settings.value, 3.4))),
-			boostDecaytimer: Timer(3000),
-			decayTimer : Timer(300),
+			threshold : Math.round(skillSettings.threshold.base * (Math.pow(settings.value, skillSettings.threshold.exponent))),
+			boostDecaytimer: Timer(skillSettings.boostDecaytimer),
+			decayTimer : Timer(skillSettings.decayTimer),
 			timer : Timer(speed),
 			delayTimer: Timer(delay),
 			
@@ -47,10 +46,6 @@ class Skills {
 					speed: this.speed,
 					threshold : this.threshold,
 				})
-			},
-
-			package : function () {
-				
 			},
 
 			loadDB(skill) {
@@ -98,12 +93,12 @@ class Skills {
 			addXp(xp) {
 				this.xp += xp;
 				let leveledUp = false
-				let threshold = Math.round(1.1 * (Math.pow(this.value, 3.4)))
+				let threshold = Math.round(skillSettings.threshold.base * (Math.pow(this.value, skillSettings.threshold.exponent)))
 				while (this.xp > threshold) {
 					leveledUp = true
 					this.levelUpBy(1);
 					this.equalize();
-					threshold = Math.round(1.1 * (Math.pow(this.value, 3.4)))
+					threshold = Math.round(skillSettings.threshold.base * (Math.pow(this.value, skillSettings.threshold.exponent)))
 
 				}
 				this.threshold = threshold

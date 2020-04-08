@@ -1,5 +1,5 @@
 const {RigidBody, Timer} = require('../../../Helpers')
-
+const {actionButtonPanelSettings, hitBubbleSettings} = require('../../../../GlobalSettings')
 
 class Action {
 	constructor(info) {
@@ -7,19 +7,19 @@ class Action {
 		this.task = info.task || "none";
 		
 		let pos = {
-				x: -60,
-				y: 440,
+				x: actionButtonPanelSettings.x,
+				y: actionButtonPanelSettings.y,
 		}
 
+		let xOffset = actionButtonPanelSettings.xOffset
 		
-
 		this.buttons = {
-			walk : this.toggleSwitch("Pause", info.walk || true, pos.x += 60),
-			home : this.toggleSwitch("Home", info.home || false, pos.x += 60),
-			farm : this.toggleSwitch("Farm", info.farm || false, pos.x += 60),
-			mine : this.toggleSwitch("Mine", info.mine || false, pos.x += 60),
-			woodCut : this.toggleSwitch("WoodCut", info.woodCut || false, pos.x += 60),
-			hunt : this.toggleSwitch("Hunt", info.hunt || false, pos.x += 60),
+			walk : this.toggleSwitch("Pause", info.walk || true, pos.x += xOffset, pos.y),
+			home : this.toggleSwitch("Home", info.home || false, pos.x += xOffset, pos.y),
+			farm : this.toggleSwitch("Farm", info.farm || false, pos.x += xOffset, pos.y),
+			mine : this.toggleSwitch("Mine", info.mine || false, pos.x += xOffset, pos.y),
+			woodCut : this.toggleSwitch("WoodCut", info.woodCut || false, pos.x += xOffset, pos.y),
+			hunt : this.toggleSwitch("Hunt", info.hunt || false, pos.x += xOffset, pos.y),
 		}
 
 		this.hitBubble = this.makeHitBubble()
@@ -27,20 +27,13 @@ class Action {
 
 	}
 
-	buttonPackage() {
-		return ({
-
-		})
-	}
-
-
 	makeHitBubble () {
 		return ({
 			value: false,
-			body: new RigidBody({x:0, y: 0, width:15, height:15}),
+			body: new RigidBody(hitBubbleSettings.body),
 			img: "redHitBubble",
-			timer : new Timer(2000),
-			moveTimer : new Timer(100),
+			timer : new Timer(hitBubbleSettings.timer),
+			moveTimer : new Timer(hitBubbleSettings.moveTimer),
 			y: 0,
 
 			done: function() {
@@ -189,7 +182,7 @@ class Action {
 				});
 	}
 
-	toggleSwitch(name, state, x) {
+	toggleSwitch(name, state, x, y) {
 
 		return ({
 					name : name,

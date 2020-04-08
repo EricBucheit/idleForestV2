@@ -1,6 +1,6 @@
 const EntityStructure = require('../structure')
 const {RandomInt} = require('../../../../Helpers')
-
+const {animalSettings} = require('../../../../../GlobalSettings/entitySettings')
 class AnimalStructure {
 	animal(items, level) {
 		let animals = [
@@ -22,9 +22,9 @@ class AnimalStructure {
 	}
 
 	calculateHealth = (level, boost) => {
-	    let exponent = 1.9 + boost
-	    let baseXP = 4
-	    return RandomInt(Math.floor(baseXP * (level ^ 1.9)), Math.floor(baseXP * (level ^ exponent)))
+	    let exponent = animalSettings.health.exponent + boost
+	    let baseXP = animalSettings.health.base
+	    return RandomInt(Math.floor(baseXP * (level ^ animalSettings.health.exponent)), Math.floor(baseXP * (level ^ exponent)))
 	}
 
 	animalSpriteSheetEnd() {
@@ -49,7 +49,7 @@ class AnimalStructure {
 		structure.info.type = "animal";
 		structure.body.velocityX = 1;
 		structure.body.velocityY = 1;
-		structure.skills.health.value = this.calculateHealth(level, -0.6)
+		structure.skills.health.value = this.calculateHealth(level, animalSettings.chicken.hpOffset)
 		structure.body.width = 16;
 		structure.body.height = 16;
 		structure.animation.spriteSheetEnd = this.animalSpriteSheetEnd()
@@ -63,7 +63,7 @@ class AnimalStructure {
 		structure.info.type = "animal";
 		structure.body.velocityX = 1;
 		structure.body.velocityY = 1;
-		structure.skills.health.value = this.calculateHealth(level, 0.1)
+		structure.skills.health.value = this.calculateHealth(level, animalSettings.cow.hpOffset)
 		structure.body.width = 64;
 		structure.body.height = 64;
 		structure.animation.spriteSheetEnd = this.animalSpriteSheetEnd()
@@ -78,7 +78,7 @@ class AnimalStructure {
 		structure.info.type = "animal";
 		structure.body.velocityX = 1;
 		structure.body.velocityY = 1;
-		structure.skills.health.value = this.calculateHealth(level, 0.5)
+		structure.skills.health.value = this.calculateHealth(level, animalSettings.llama.hpOffset)
 		structure.body.width = 64;
 		structure.body.height = 64;
 		structure.animation.spriteSheetEnd = this.animalSpriteSheetEnd()
@@ -93,7 +93,7 @@ class AnimalStructure {
 		structure.info.type = "animal";
 		structure.body.velocityX = 1;
 		structure.body.velocityY = 1;
-		structure.skills.health.value = this.calculateHealth(level, 0.6)
+		structure.skills.health.value = this.calculateHealth(level, animalSettings.pig.hpOffset)
 		structure.body.width = 64;
 		structure.body.height = 64;
 		structure.animation.spriteSheetEnd = this.animalSpriteSheetEnd()
@@ -108,7 +108,7 @@ class AnimalStructure {
 		structure.info.type = "animal";
 		structure.body.velocityX = 1;
 		structure.body.velocityY = 1;
-		structure.skills.health.value = this.calculateHealth(level, 0)
+		structure.skills.health.value = this.calculateHealth(level, animalSettings.turkey.hpOffset)
 		structure.body.width = 64;
 		structure.body.height = 64;
 		structure.animation.spriteSheetEnd = this.animalSpriteSheetEnd()

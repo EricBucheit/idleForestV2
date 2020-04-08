@@ -1,5 +1,5 @@
 const {Timer} = require('../../../Helpers/functions')
-
+const {animationSettings} = require('../../../../GlobalSettings')
 
 class Animation {
 	constructor(info) {
@@ -29,15 +29,15 @@ class Animation {
 		}
 
 		this.indices = {
-			hurt: this.timer(spriteSheetEnd.hurt,200),
-			idle: this.timer(spriteSheetEnd.idle,200),
-			magic:this.timer(spriteSheetEnd.magic,200),
-			shoot: this.timer(spriteSheetEnd.shoot,100),
-			swing: this.timer(spriteSheetEnd.swing,50),
-			thrust: this.timer(spriteSheetEnd.thrust,300),
-			walk: this.timer(spriteSheetEnd.walk ,45),
-			eat: this.timer(spriteSheetEnd.eat , 200),
-			spell : this.timer(spriteSheetEnd.spell, 85),
+			hurt: this.timer(spriteSheetEnd.hurt,animationSettings.timer.hurt),
+			idle: this.timer(spriteSheetEnd.idle,animationSettings.timer.idle),
+			magic:this.timer(spriteSheetEnd.magic,animationSettings.timer.magic),
+			shoot: this.timer(spriteSheetEnd.shoot,animationSettings.timer.shoot),
+			swing: this.timer(spriteSheetEnd.swing,animationSettings.timer.swing),
+			thrust: this.timer(spriteSheetEnd.thrust,animationSettings.timer.thrust),
+			walk: this.timer(spriteSheetEnd.walk ,animationSettings.timer.walk),
+			eat: this.timer(spriteSheetEnd.eat , animationSettings.timer.eat),
+			spell : this.timer(spriteSheetEnd.spell, animationSettings.timer.spell),
 		}
 	}
 

@@ -1,225 +1,225 @@
 const ItemTemplate = require('../../Template')
 const {Bar} = require("../ResourceItems")
-
+const {armorSettings} = require('../../../../../GlobalSettings/itemSettings');
 let BronzeArmor = {
 	helm : new ItemTemplate({
 		name: "Bronze Helm", 
-		price: 10000,
-		bonus: 12,
+		price: armorSettings.bronze.helm.price,
+		bonus: armorSettings.bronze.helm.bonus,
 		img: "bronzeHelm",
 		category: "armor",
-		craftTime: 60000,
+		craftTime: armorSettings.bronze.helm.craftTime,
 		use : function(player) {
 			player.armor.add("helm", this, player.inventory);	
 			return ({used: false})
 		}, 
-		recipe : [{item: Bar.bronze, quantity: 30}]
+		recipe : [{item: Bar.bronze, quantity: armorSettings.bronze.helm.craftCostQuantity}]
 	}),
 
 	chest : new ItemTemplate({
 		name: "Bronze Chest", 
-		price: 15000,
-		bonus : 18,
+		price: armorSettings.bronze.chest.price,
+		bonus : armorSettings.bronze.chest.bonus,
 		img: "bronzeChest",
 		category: "armor",
-		craftTime: 60000,
+		craftTime: armorSettings.bronze.chest.craftTime,
 
 		use : function(player) {
 			player.armor.add("chest", this, player.inventory)
 			return ({used: false})
 		}, 
-		recipe : [{item: Bar.bronze, quantity: 50}]
+		recipe : [{item: Bar.bronze, quantity: armorSettings.bronze.chest.craftCostQuantity}]
 	}),
 
 	legs : new ItemTemplate({
 			name: "Bronze Legs", 
-			price: 13000,
-			bonus : 16,
+			price: armorSettings.bronze.legs.price,
+			bonus : armorSettings.bronze.legs.bonus,
 			img: "bronzeLegs",
 			category: "armor",
-			craftTime: 60000,
+			craftTime: armorSettings.bronze.legs.craftTime,
 
 			use : function(player) {
 				player.armor.add("legs", this, player.inventory)
 				return ({used: false})
 			}, 
-			recipe : [{item: Bar.bronze, quantity: 40}]
+			recipe : [{item: Bar.bronze, quantity: armorSettings.bronze.legs.craftCostQuantity}]
 	}),
 
 	boots : new ItemTemplate({
 		name: "Bronze Boots", 
-		price: 9000,
-		bonus: 10,
+		price: armorSettings.bronze.boots.price,
+		bonus: armorSettings.bronze.boots.bonus,
 		img: "bronzeBoots",
 		category: "armor",
-		craftTime: 60000,
+		craftTime: armorSettings.bronze.boots.craftTime,
 
 		use : function(player) {
 				player.armor.add("feet", this, player.inventory);
 				return ({used: false})
 			}, 
-			recipe : [{item: Bar.bronze, quantity: 20}]
+			recipe : [{item: Bar.bronze, quantity: armorSettings.bronze.boots.craftCostQuantity}]
 	}),
 
 	shield : new ItemTemplate({
 		name: "Bronze Shield", 
-		price: 13000,
-		bonus: 19,
+		price: armorSettings.bronze.shield.price,
+		bonus: armorSettings.bronze.shield.bonus,
 		img: "bronzeShield",
 		category: "armor",
-		craftTime: 60000,
+		craftTime: armorSettings.bronze.shield.craftTime,
 
 		use : function(player) {
 			player.armor.add("shield", this, player.inventory);			
 			return ({used: false})
 		}, 
-		recipe : [{item: Bar.bronze, quantity: 30}]
+		recipe : [{item: Bar.bronze, quantity: armorSettings.bronze.shield.craftCostQuantity}]
 	})
 }
 
 let IronArmor = {
 	helm : new ItemTemplate({
 		name: "Iron Helm", 
-		price: 50000,
-		bonus : 27,
+		price: armorSettings.iron.helm.price,
+		bonus : armorSettings.iron.helm.bonus,
 		img: "ironHelm",		
 		category: "armor",
-		craftTime: 120000,
+		craftTime: armorSettings.iron.helm.craftTime,
 		use : function(player) {
 			player.armor.add("helm", this, player.inventory)
 			return ({used: false})
 		}, 
-		recipe : [{item: Bar.iron, quantity: 50}]
+		recipe : [{item: Bar.iron, quantity: armorSettings.iron.helm.craftCostQuantity}]
 	}),
 
 	chest : new ItemTemplate({
 		name: "Iron Chest", 
-		price: 65000,
-		bonus : 34,
+		price: armorSettings.iron.chest.price,
+		bonus : armorSettings.iron.chest.bonus,
 		img: "ironChest",		
 		category: "armor",
-		craftTime: 120000,
+		craftTime: armorSettings.iron.chest.craftTime,
 		use : function(player) {
 			player.armor.add("chest", this, player.inventory)
 			return ({used: false})
 		}, 
-		recipe : [{item: Bar.iron, quantity: 80}]
+		recipe : [{item: Bar.iron, quantity: armorSettings.iron.chest.craftCostQuantity}]
 	}),
 
 	legs : new ItemTemplate({
 		name: "Iron Legs", 
-		price: 60000,
-		bonus : 32,
+		price: armorSettings.iron.legs.price,
+		bonus : armorSettings.iron.legs.bonus,
 		img: "ironLegs",		
 		category: "armor",
-		craftTime: 120000,
+		craftTime: armorSettings.iron.legs.craftTime,
 		use : function(player) {
 			player.armor.add("legs", this, player.inventory);
 			return ({used: false})
 		}, 
-		recipe : [{item: Bar.iron, quantity: 70}]
+		recipe : [{item: Bar.iron, quantity: armorSettings.iron.legs.craftCostQuantity}]
 	}),
 
 	boots : new ItemTemplate({
 		name: "Iron Boots", 
-		price: 40000,
-		bonus : 25,
+		price: armorSettings.iron.boots.price,
+		bonus : armorSettings.iron.boots.bonus,
 		img: "ironBoots",		
 		category: "armor",
-		craftTime: 120000,
+		craftTime: armorSettings.iron.boots.craftTime,
 		use : function(player) {
 			player.armor.add("feet", this, player.inventory);
 			return ({used: false})
 
 		}, 
-		recipe : [{item: Bar.iron, quantity: 40}]
+		recipe : [{item: Bar.iron, quantity: armorSettings.iron.boots.craftCostQuantity}]
 	}),
 
 	shield : new ItemTemplate({
 		name: "Iron Shield", 
-		price: 60000,
-		bonus : 29,
+		price: armorSettings.iron.shield.price,
+		bonus : armorSettings.iron.shield.bonus,
 		img: "ironShield",		
 		category: "armor",
-		craftTime: 120000,
+		craftTime: armorSettings.iron.shield.craftTime,
 		use : function(player) {
 			player.armor.add("shield", this, player.inventory);
 			return ({used: false})
 		}, 
-		recipe : [{item: Bar.iron, quantity: 60}]
+		recipe : [{item: Bar.iron, quantity: armorSettings.iron.shield.craftCostQuantity}]
 	}),
 }
 
 let GoldArmor = {
 	helm : new ItemTemplate({
 		name: "Gold Helm", 
-		price: 100000,
-		bonus : 47,
+		price: armorSettings.gold.helm.price,
+		bonus : armorSettings.gold.helm.bonus,
 		img: "goldHelm",
 		category: "armor",
-		craftTime: 180000,
+		craftTime: armorSettings.gold.helm.craftTime,
 		use : function(player) {
 			player.armor.add("helm", this, player.inventory)
 			return ({used: false})
 		}, 
-		recipe : [{item: Bar.gold, quantity: 50}]
+		recipe : [{item: Bar.gold, quantity: armorSettings.gold.helm.craftCostQuantity}]
 	}),
 
 	chest : new ItemTemplate({
 		name: "Gold Chest", 
-		price: 180000,
-		bonus : 56,
+		price: armorSettings.gold.chest.price,
+		bonus : armorSettings.gold.chest.bonus,
 		img : "goldChest",
 		category: "armor",
-		craftTime: 180000,
+		craftTime: armorSettings.gold.chest.craftTime,
 		use : function(player) {
 			player.armor.add("chest", this, player.inventory);
 			return ({used: false})
 
 		}, 
-		recipe : [{item: Bar.gold, quantity: 80}]
+		recipe : [{item: Bar.gold, quantity: armorSettings.gold.chest.craftCostQuantity}]
 	}),
 	
 	legs : new ItemTemplate({
 		name: "Gold Legs", 
-		price: 110000,
-		bonus : 52,
+		price: armorSettings.gold.legs.price,
+		bonus : armorSettings.gold.legs.bonus,
 		img: "goldLegs",
 		category: "armor",
-		craftTime: 180000,
+		craftTime: armorSettings.gold.legs.craftTime,
 		use : function(player) {
 			player.armor.add("legs", this, player.inventory);
 			return ({used: false})
 		}, 
-		recipe : [{item: Bar.gold, quantity: 70}]
+		recipe : [{item: Bar.gold, quantity: armorSettings.gold.legs.craftCostQuantity}]
 	}),
 	
 	boots : new ItemTemplate({
 		name: "Gold Boots", 
-		price: 90000,
-		bonus : 48,
+		price: armorSettings.gold.boots.price,
+		bonus : armorSettings.gold.boots.bonus,
 		img: "goldBoots",
 		category: "armor",
-		craftTime: 180000,
+		craftTime: armorSettings.gold.boots.craftTime,
 		use : function(player) {
 			player.armor.add("feet", this, player.inventory);
 			return ({used: false})
 		}, 
-		recipe : [{item: Bar.gold, quantity: 40}]
+		recipe : [{item: Bar.gold, quantity: armorSettings.gold.boots.craftCostQuantity}]
 	}),
 
 	shield : new ItemTemplate({
 		name: "Gold Shield", 
-		price: 112000,
-		bonus : 51,
+		price: armorSettings.gold.shield.price,
+		bonus : armorSettings.gold.shield.bonus,
 		img: "goldShield",
 		category: "armor",
-		craftTime: 180000,
+		craftTime: armorSettings.gold.shield.craftTime,
 		use : function(player) {
 			player.armor.add("shield", this, player.inventory);
 			return ({used: false})
 		}, 
-		recipe : [{item: Bar.gold, quantity: 60}]
+		recipe : [{item: Bar.gold, quantity: armorSettings.gold.shield.craftCostQuantity}]
 	}),
 }
 
@@ -227,73 +227,73 @@ let GoldArmor = {
 let PlatinumArmor = {
 	helm : new ItemTemplate({
 		name: "Platinum Helm", 
-		price: 200000,
-		bonus : 68,
+		price: armorSettings.platinum.helm.price,
+		bonus : armorSettings.platinum.helm.bonus,
 		img: "platinumHelm",
 		category: "armor",
-		craftTime: 240000,
+		craftTime: armorSettings.platinum.helm.craftTime,
 		use : function(player) {
 			player.armor.add("helm", this, player.inventory)
 			return ({used: false})
 
 		}, 
-		recipe : [{item: Bar.platinum, quantity: 50}]
+		recipe : [{item: Bar.platinum, quantity: armorSettings.platinum.helm.craftCostQuantity}]
 	}),
 
 	chest : new ItemTemplate({
 		name: "Platinum Chest", 
-		price: 250000,
-		bonus : 75,
+		price: armorSettings.platinum.chest.price,
+		bonus : armorSettings.platinum.chest.bonus,
 		img: "platinumChest",
 		category: "armor",
-		craftTime: 240000,
+		craftTime: armorSettings.platinum.chest.craftTime,
 		use : function(player) {
 			player.armor.add("chest", this, player.inventory)
 			return ({used: false})
 		}, 
-		recipe : [{item: Bar.platinum, quantity: 80}]
+		recipe : [{item: Bar.platinum, quantity: armorSettings.platinum.chest.craftCostQuantity}]
 	}),
 
 	legs : new ItemTemplate({
 		name: "Platinum Legs", 
-		price: 225000,
-		bonus : 72,
+		price: armorSettings.platinum.legs.price,
+		bonus : armorSettings.platinum.legs.bonus,
 		img: "platinumLegs",
 		category: "armor",
-		craftTime: 240000,
+		craftTime: armorSettings.platinum.legs.craftTime,
 		use : function(player) {
 			player.armor.add("legs", this, player.inventory);
 			return ({used: false})
 
 		}, 
-		recipe : [{item: Bar.platinum, quantity: 70}]
+		recipe : [{item: Bar.platinum, quantity: armorSettings.platinum.legs.craftCostQuantity}]
 	}),
 	boots : new ItemTemplate({
 		name: "Platinum Boots", 
-		price: 190000,
-		bonus : 69,
+		price: armorSettings.platinum.boots.price,
+		bonus : armorSettings.platinum.boots.bonus,
 		img: "platinumBoots",		
 		category: "armor",
-		craftTime: 240000,
+		craftTime: armorSettings.platinum.boots.craftTime,
 		use : function(player) {
 			player.armor.add("feet", this, player.inventory);
 			return ({used: false})
 		}, 
-		recipe : [{item: Bar.platinum, quantity: 40}]
+		recipe : [{item: Bar.platinum, quantity: armorSettings.platinum.boots.craftCostQuantity}]
 	}),
 
 	shield : new ItemTemplate({
 		name: "Platinum Shield", 
-		price: 230000, 
-		bonus : 70,
+		price: armorSettings.platinum.shield.price, 
+		bonus : armorSettings.platinum.shield.bonus,
 		img: "platinumShield",		
 		category: "armor",
-		craftTime: 240000,
+		craftTime: armorSettings.platinum.shield.craftTime,
 		use : function(player) {
 			player.armor.add("shield", this, player.inventory);
 			return ({used: false})
 		}, 
-		recipe : [{item: Bar.platinum, quantity: 60}]
+		recipe : [{item: Bar.platinum, quantity: armorSettings.platinum.shield.craftCostQuantity}]
 	}),
 
 }
@@ -301,69 +301,69 @@ let PlatinumArmor = {
 let DiamondArmor = {
 		helm : new ItemTemplate({
 			name: "Diamond Helm", 
-			price: 500000, 
-			bonus : 88,
+			price: armorSettings.diamond.helm.price, 
+			bonus : armorSettings.diamond.helm.bonus,
 			img: "diamondHelm",
 			category: "armor",
-			craftTime: 300000,
+			craftTime: armorSettings.diamond.helm.craftTime,
 			use : function(player) {
 				player.armor.add("helm", this, player.inventory)
 				return ({used: false})
 			}, 
-			recipe : [{item: Bar.diamond, quantity: 100}]
+			recipe : [{item: Bar.diamond, quantity: armorSettings.diamond.helm.craftCostQuantity}]
 			}),
 
 		chest : new ItemTemplate({
 			name: "Diamond Chest", 
-			price: 750000, 
-			bonus : 95,
+			price: armorSettings.diamond.chest.price, 
+			bonus : armorSettings.diamond.chest.bonus,
 			img: "diamondChest",
 			category: "armor",
-			craftTime: 300000,
+			craftTime: armorSettings.diamond.chest.craftTime,
 			use : function(player) {
 				player.armor.add("chest", this, player.inventory)
 				return ({used: false})
 			}, 
-			recipe : [{item: Bar.diamond, quantity: 150}]
+			recipe : [{item: Bar.diamond, quantity: armorSettings.diamond.chest.craftCostQuantity}]
 		}),
 		legs : new ItemTemplate({
 			name: "Diamond Legs", 
-			price: 600000, 
-			bonus : 91,
+			price: armorSettings.diamond.legs.price, 
+			bonus : armorSettings.diamond.legs.bonus,
 			img: "diamondLegs",
 			category: "armor",
-			craftTime: 300000,
+			craftTime: armorSettings.diamond.legs.craftTime,
 			use : function(player) {
 				player.armor.add("legs", this, player.inventory)
 				return ({used: false})
 			}, 
-			recipe : [{item: Bar.diamond, quantity: 130}]
+			recipe : [{item: Bar.diamond, quantity: armorSettings.diamond.legs.craftCostQuantity}]
 		}),
 		boots : new ItemTemplate({
 			name: "Diamond Boots", 
-			price: 450000, 
-			bonus : 86,
+			price: armorSettings.diamond.boots.price, 
+			bonus : armorSettings.diamond.boots.bonus,
 			img: "diamondBoots",
 			category: "armor",
-			craftTime: 300000,
+			craftTime: armorSettings.diamond.boots.craftTime,
 			use : function(player) {
 				player.armor.add("feet", this, player.inventory);
 				return ({used: false})
 			}, 
-			recipe : [{item: Bar.diamond, quantity: 80}]
+			recipe : [{item: Bar.diamond, quantity: armorSettings.diamond.boots.craftCostQuantity}]
 		}),
 		shield : new ItemTemplate({
 			name: "Diamond Shield", 
-			price: 610000,
-			bonus : 90,
+			price: armorSettings.diamond.shield.price,
+			bonus : armorSettings.diamond.shield.bonus,
 			img: "diamondShield",
 			category: "armor",
-			craftTime: 300000,
+			craftTime: armorSettings.diamond.shield.craftTime,
 			use : function(player) {
 				player.armor.add("shield", this, player.inventory)
 				return ({used: false})
 			},
-			recipe : [{item: Bar.diamond, quantity: 120}]
+			recipe : [{item: Bar.diamond, quantity: armorSettings.diamond.shield.craftCostQuantity}]
 		}),
 
 }
